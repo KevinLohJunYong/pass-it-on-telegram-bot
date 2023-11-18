@@ -1,0 +1,2311 @@
+<html>
+ <head>
+  <meta content="IE=EmulateIE8" http-equiv="X-UA-Compatible"/>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <title>
+   Item List
+  </title>
+  <link href="/passiton/favicon.ico" rel="shortcut icon"/>
+  <link href="/skin/qql/base.css" rel="stylesheet" type="text/css"/>
+  <link href="/pio/style/13_001/main.css?1429093428" id="main_css" rel="stylesheet" type="text/css"/>
+  <script language="javascript" src="/site/ctx/js/menu.js" type="text/javascript">
+  </script>
+  <script language="javascript" src="/site/ctx/jquery/jquery.js" type="text/javascript">
+  </script>
+  <script language="javascript" src="/site/ctx/jquery/easing.js" type="text/javascript">
+  </script>
+  <script language="javascript" src="/site/ctx/jquery/ctjq.js" type="text/javascript">
+  </script>
+  <link href="/site/ctx/jquery/ctjq.css" rel="stylesheet" type="text/css"/>
+  <script language="javascript" src="/skin/qql/admin.js">
+  </script>
+  <link href="/skin/qql/menu.css" rel="stylesheet" type="text/css"/>
+  <script>
+   // non-admin vars
+if (typeof ive_settings=='undefined') {
+  ive_settings={};
+  ive_settings.ptid=8284;
+  ive_settings.url={
+    _head: '/cos/o.x?c=/pio/',
+    skin_path:'/skin/qql/' 
+  };
+  ive_settings.user={ fname: '', _id: '' , email:''};
+}
+  </script>
+  <!-- server extra head -->
+  <!-- site extra head -->
+  <script>
+   if (ive_settings!=null) { ive_settings.edit_mode = 'none'; }
+  </script>
+  <!-- page extra head -->
+  <!-- for Facebook -->
+  <meta content="Pass It On" property="og:title"/>
+  <meta content="article" property="og:type"/>
+  <meta content="/passiton/slot/u13/pass-it-on-logo.jpg" property="og:image"/>
+  <meta content="http://www.passiton.org.sg" property="og:url"/>
+  <meta content="Grant A Wish. Donate Pre-loved Items." property="og:description"/>
+  <!-- for Twitter -->
+  <meta content="Grant A Wish. Donate Pre-loved Items." name="twitter:card"/>
+  <meta content="Pass It On" name="twitter:title"/>
+  <meta content="Grant A Wish. Donate Pre-loved Items." name="twitter:description"/>
+  <meta content="/passiton/slot/u13/pass-it-on-logo.jpg" name="twitter:image"/>
+  <!-- END all extra head -->
+  <script>
+   if (typeof(themeswap)=='function'&&document.location.search.indexOf('theme')>=0) themeswap(document.location.search);
+
+if (typeof(coto)=='undefined') coto={ ive: { } };
+if (!coto.ive.Controller) coto.ive.Controller = function() { };
+
+coto.ive.Controller.prototype.build=function(dom,opts){
+  if (typeof(dom)=='function') return this.build_func=dom;
+  this.dom=dom;
+  if (!(this.options=$(this.dom).data('widget_options'))) this.options={ };
+  if (!(this.idata=$(this.dom).data('idata'))) this.idata={ };
+  this.idata.controller=this;
+  this.build_func.call(this,opts);
+  $(dom).data('widget_options',this.options);
+  $(dom).data('idata',this.idata);
+};
+coto.controllers={ }; // controllers list
+function ive_controller(wtype) {
+  return coto.controllers[wtype]||(coto.controllers[wtype]=new coto.ive.Controller());
+}
+
+ive_tunings={ };
+function ive_tuning(cat) { return ive_tunings[cat]||(ive_tunings[cat]={ }); }
+
+// ----- DROPMENU -----
+$(function() {
+
+
+
+
+
+
+
+  // old menu.js
+  $('.sitemenu_area ul.sitemenu li, .dropmenu a').bind('mouseover mouseleave',function(ev) {
+    var menuid='dropmenu_'+get_idnum(this.id),$menu=$('#'+menuid);
+    var isenter=(ev.type=='mouseover'||ev.type=='mouseenter');
+    ctmenu[isenter?'show':'hide'](menuid,this,$menu.hasClass('drop_right_')?'right':'bottom');
+  });
+});
+  </script>
+ </head>
+ <body class="PTP8273" leftmargin="0" topmargin="0">
+  <img id="shade_img_ff" src="/pix/a/shadow5.png" style="visibility:hidden;position:absolute;z-index:1001;"/>
+  <img id="shade_img_ie" src="/pix/a/shadow8.gif" style="visibility:hidden;position:absolute;z-index:1001;filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius=5,MakeShadow=true,ShadowOpacity=0.20);"/>
+  <div id="netcontent">
+   <div class="layout-default" id="lo_whole">
+    <div id="lo_panel">
+     <div id="lo_main">
+      <div class="main_area">
+       <div class="masthead_area">
+        <!-- MASTHEAD -->
+        <div style="width: 990px;">
+         <div style="float: left; padding-top: 20px;">
+          <a href="/">
+           <img alt="Passiton Logo" class="ive_eobj_left ive_clickable" src="/passiton/slot/u13/pass-it-on-logo.jpg"/>
+          </a>
+         </div>
+         <div style="float: right; text-align: right;">
+          <div class="login" id="login-box" style="">
+           <div style="padding: 8px 20px 0px 0px;">
+            <form action="/cos/o.x?c=/pio/user&amp;func=verify" method="POST">
+             <strong>
+              Email:
+             </strong>
+             <input class="input_user_id" id="login_name" name="name" type="text" value=""/>
+             <strong>
+              Password:
+             </strong>
+             <input class="input_pw" id="login_pw" name="password" type="password" value=""/>
+             <input name="jumpto" type="hidden" value="www.passiton.org.sg/?"/>
+             <input class="button_login" type="submit" value="Login"/>
+             <a class="a_signup" href="/forgot-password" style="color: #ffa200; text-decoration: none;">
+              Forgot Password
+             </a>
+             <a class="a_signup" href="/sign-up" style="color: #ffffff; text-decoration: none;">
+              Sign Up!
+             </a>
+            </form>
+           </div>
+          </div>
+          <div style="clear: both; font-size: 1px;">
+          </div>
+          <div style="padding-top: 10px; padding-left: 120px; text-align: right;">
+           <a href="/">
+            <img alt="Home" class="ive_eobj_left ive_clickable" hspace="2" src="/passiton/slot/u13/sitemenu/nav_01.png"/>
+           </a>
+           <a href="/about-us">
+            <img alt="About Us" class="ive_eobj_left ive_clickable" hspace="2" src="/passiton/slot/u13/sitemenu/nav_02.png"/>
+           </a>
+           <a href="/grant-a-wish">
+            <img alt="Grant a Wish" class="ive_eobj_left ive_clickable" hspace="2" src="/passiton/slot/u13/sitemenu/nav_03.png"/>
+           </a>
+           <!--img XXonclick="$(this).linkto({url:'/donate-item',newwin:0})" src="/passiton/slot/u13/sitemenu/nav_04.png" alt="Donate Item" class="ive_eobj_left ive_clickable" hspace="2"-->
+           <a href="/vwo-list">
+            <img alt="VWO List" class="ive_eobj_left ive_clickable" hspace="2" src="/passiton/slot/u13/sitemenu/nav_05.png"/>
+           </a>
+           <a href="/item-list">
+            <img alt="Item List" class="ive_eobj_left ive_clickable" hspace="2" src="/passiton/slot/u13/sitemenu/nav_06.png"/>
+           </a>
+           <a href="/faq">
+            <img alt="FAQ" class="ive_eobj_left ive_clickable" hspace="2" src="/passiton/slot/u13/sitemenu/nav_09.png"/>
+           </a>
+           <a href="/contact-us">
+            <img alt="Contact Us" class="ive_eobj_left ive_clickable" hspace="2" src="/passiton/slot/u13/sitemenu/nav_08.png"/>
+           </a>
+          </div>
+         </div>
+         <div style="clear: both; font-size: 1px;">
+         </div>
+        </div>
+        <!-- HOMEPAGE -->
+        <div style="padding: 0px; margin: 0px;">
+         <div class="iveo_pipe_passiton_wishlist_latest iveo_gencon ive_eobj_left" style="width: 100%;" width="100%">
+          <style>
+           .wishlist {
+		background:#fff6d4; padding:20px;
+		-webkit-border-radius: 20px; -moz-border-radius: 20px; -o-border-radius: 20px; -ms-border-radius: 20px; -khtml-border-radius: 20px; border-radius: 20px;
+	}
+	.item { width:220px; }
+	.item_header { width:220px; font-weight:bold; overflow:hidden; }
+	.item_h1 { width:50%; height:21px; float:left; background:#E7E7E7; padding-top:6px; font-weight:bold; }
+	.item_h2 { width:50%; height:27px;float:left; background:#FBCF00; font-weight:bold; padding:0px; text-align:center; }
+	.item_body { clear:both; width:210px; height:150px; padding-bottom:6px; background:#FFF; text-overflow:ellipsis; overflow:hidden; padding:4px; padding-bottom:10px;}
+	.item_footer { width:210px; height:18px; background:#E7E7E7; font-size:90%; overflow:hidden; padding:4px; overflow:hidden; white-space: nowrap; }
+	.item a {
+	  text-decoration: none;
+		color:#000;
+	}
+	/*.item_header { font-weight:bold; line-height:14px; padding-top:4px; padding-bottom:10px; }*/
+          </style>
+          <br/>
+          <div class="wishlist">
+           <table border="0" width="100%">
+            <tbody>
+             <tr>
+              <td colspan="4">
+               <span style="color:#29a62e; font-size:16px; font-weight:bold;">
+                LATEST WISH LIST
+               </span>
+              </td>
+             </tr>
+             <tr>
+              <td colspan="4">
+               <br/>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               <div class="item">
+                <div class="item_header">
+                 <div class="item_h1">
+                  13 Jul 2023
+                 </div>
+                 <div class="item_h2">
+                  <!--a href="/grant-a-wish-1?wid=123866"-->
+                  <a href="/grant-a-wish">
+                   <!--img alt="I Can Donate" src="/passiton/slot/u13/homepage/button-i-can-donate.jpg" height="27"/-->
+                   <img alt="I Can Donate" height="27" src="/passiton/slot/u13//seemore.jpg"/>
+                  </a>
+                 </div>
+                </div>
+                <div class="item_body">
+                 <div class="item_header" style="height:38px;">
+                  Baby Diapers and Milk Powder
+                 </div>
+                 Diapers - Merries (size L, Pull ups)
+Milk Powder - Similac stage 3
+
+Couple with 14months old child and wife is 9 months pregnant. Client is employed, low income and lives in ren...
+                </div>
+                <div style="height:25px; background:#FFF;">
+                 <img src="/passiton/slot/u13/homepage/delivery-cost-covered-by-donor.jpg"/>
+                </div>
+                <div class="item_footer" title="REACH FSC">
+                 REACH FSC
+                </div>
+               </div>
+              </td>
+              <td>
+               <div class="item">
+                <div class="item_header">
+                 <div class="item_h1">
+                  13 Jul 2023
+                 </div>
+                 <div class="item_h2">
+                  <!--a href="/grant-a-wish-1?wid=123865"-->
+                  <a href="/grant-a-wish">
+                   <!--img alt="I Can Donate" src="/passiton/slot/u13/homepage/button-i-can-donate.jpg" height="27"/-->
+                   <img alt="I Can Donate" height="27" src="/passiton/slot/u13//seemore.jpg"/>
+                  </a>
+                 </div>
+                </div>
+                <div class="item_body">
+                 <div class="item_header" style="height:38px;">
+                  Wardrobe
+                 </div>
+                 Homeless client who just received HDB flat. Needs assistance to furnish his flat.
+                </div>
+                <div style="height:25px; background:#FFF;">
+                 <img src="/passiton/slot/u13/homepage/delivery-cost-covered-by-donor.jpg"/>
+                </div>
+                <div class="item_footer" title="Fei Yue FSC @ Bukit Batok">
+                 Fei Yue FSC @ Bukit Batok
+                </div>
+               </div>
+              </td>
+              <td>
+               <div class="item">
+                <div class="item_header">
+                 <div class="item_h1">
+                  13 Jul 2023
+                 </div>
+                 <div class="item_h2">
+                  <!--a href="/grant-a-wish-1?wid=123864"-->
+                  <a href="/grant-a-wish">
+                   <!--img alt="I Can Donate" src="/passiton/slot/u13/homepage/button-i-can-donate.jpg" height="27"/-->
+                   <img alt="I Can Donate" height="27" src="/passiton/slot/u13//seemore.jpg"/>
+                  </a>
+                 </div>
+                </div>
+                <div class="item_body">
+                 <div class="item_header" style="height:38px;">
+                  Walking Cane
+                 </div>
+                 Client is a caregiver to a cancer patient and had recently undergone a surgery and is recovering. Caregiver requires a walking cane to help him move around.
+                </div>
+                <div style="height:25px; background:#FFF;">
+                 <img src="/passiton/slot/u13/homepage/delivery-cost-covered-by-donor.jpg"/>
+                </div>
+                <div class="item_footer" title="AIN Society">
+                 AIN Society
+                </div>
+               </div>
+              </td>
+              <td>
+               <div class="item">
+                <div class="item_header">
+                 <div class="item_h1">
+                  13 Jul 2023
+                 </div>
+                 <div class="item_h2">
+                  <!--a href="/grant-a-wish-1?wid=123863"-->
+                  <a href="/grant-a-wish">
+                   <!--img alt="I Can Donate" src="/passiton/slot/u13/homepage/button-i-can-donate.jpg" height="27"/-->
+                   <img alt="I Can Donate" height="27" src="/passiton/slot/u13//seemore.jpg"/>
+                  </a>
+                 </div>
+                </div>
+                <div class="item_body">
+                 <div class="item_header" style="height:38px;">
+                  Diapers and Milk Powder
+                 </div>
+                 Client and husband has 4 children ranging from newborn to 11 years. Husband has a history of medical conditions and has recently undegone treatment that has deemed him unfit to wor...
+                </div>
+                <div style="height:25px; background:#FFF;">
+                 <img src="/passiton/slot/u13/homepage/delivery-cost-covered-by-donor.jpg"/>
+                </div>
+                <div class="item_footer" title="AMKFSC Community Services Ltd - Sengkang">
+                 AMKFSC Community Services Ltd - Sengkang
+                </div>
+               </div>
+              </td>
+             </tr>
+             <tr>
+              <td colspan="4">
+               <br/>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               <div class="item">
+                <div class="item_header">
+                 <div class="item_h1">
+                  13 Jul 2023
+                 </div>
+                 <div class="item_h2">
+                  <!--a href="/grant-a-wish-1?wid=123861"-->
+                  <a href="/grant-a-wish">
+                   <!--img alt="I Can Donate" src="/passiton/slot/u13/homepage/button-i-can-donate.jpg" height="27"/-->
+                   <img alt="I Can Donate" height="27" src="/passiton/slot/u13//seemore.jpg"/>
+                  </a>
+                 </div>
+                </div>
+                <div class="item_body">
+                 <div class="item_header" style="height:38px;">
+                  Washing machine
+                 </div>
+                 Low income family of 5, with 2 school going children are looking for a washing machine as the current one is faulty. Family has been relying on financial assistance for their daily...
+                </div>
+                <div style="height:25px; background:#FFF;">
+                 <img src="/passiton/slot/u13/homepage/delivery-cost-covered-by-donor.jpg"/>
+                </div>
+                <div class="item_footer" title="AMKFSC Community Services Ltd - Ang Mo Kio">
+                 AMKFSC Community Services Ltd - Ang Mo Kio
+                </div>
+               </div>
+              </td>
+              <td>
+               <div class="item">
+                <div class="item_header">
+                 <div class="item_h1">
+                  13 Jul 2023
+                 </div>
+                 <div class="item_h2">
+                  <!--a href="/grant-a-wish-1?wid=123859"-->
+                  <a href="/grant-a-wish">
+                   <!--img alt="I Can Donate" src="/passiton/slot/u13/homepage/button-i-can-donate.jpg" height="27"/-->
+                   <img alt="I Can Donate" height="27" src="/passiton/slot/u13//seemore.jpg"/>
+                  </a>
+                 </div>
+                </div>
+                <div class="item_body">
+                 <div class="item_header" style="height:38px;">
+                  Walking Stick
+                 </div>
+                 Client needs a walking stick to get around as she is getting on in years.
+                </div>
+                <div style="height:25px; background:#FFF;">
+                 <img src="/passiton/slot/u13/homepage/delivery-cost-covered-by-donor.jpg"/>
+                </div>
+                <div class="item_footer" title="Fei Yue Community Services - Mental Health">
+                 Fei Yue Community Services - Mental Health
+                </div>
+               </div>
+              </td>
+              <td>
+               <div class="item">
+                <div class="item_header">
+                 <div class="item_h1">
+                  12 Jul 2023
+                 </div>
+                 <div class="item_h2">
+                  <!--a href="/grant-a-wish-1?wid=123856"-->
+                  <a href="/grant-a-wish">
+                   <!--img alt="I Can Donate" src="/passiton/slot/u13/homepage/button-i-can-donate.jpg" height="27"/-->
+                   <img alt="I Can Donate" height="27" src="/passiton/slot/u13//seemore.jpg"/>
+                  </a>
+                 </div>
+                </div>
+                <div class="item_body">
+                 <div class="item_header" style="height:38px;">
+                  Food items needed
+                 </div>
+                 Client has been evicted out of her family and has little support. She is residing with her boyfriend at the moment. Client is lost and needs some help with food while she stabilise...
+                </div>
+                <div style="height:25px; background:#FFF;">
+                 <img src="/passiton/slot/u13/homepage/delivery-cost-covered-by-donor.jpg"/>
+                </div>
+                <div class="item_footer" title="Hougang Sheng Hong FSC">
+                 Hougang Sheng Hong FSC
+                </div>
+               </div>
+              </td>
+              <td>
+               <div class="item">
+                <div class="item_header">
+                 <div class="item_h1">
+                  12 Jul 2023
+                 </div>
+                 <div class="item_h2">
+                  <!--a href="/grant-a-wish-1?wid=123853"-->
+                  <a href="/grant-a-wish">
+                   <!--img alt="I Can Donate" src="/passiton/slot/u13/homepage/button-i-can-donate.jpg" height="27"/-->
+                   <img alt="I Can Donate" height="27" src="/passiton/slot/u13//seemore.jpg"/>
+                  </a>
+                 </div>
+                </div>
+                <div class="item_body">
+                 <div class="item_header" style="height:38px;">
+                  Diaper
+                 </div>
+                 Client (F/22) is married and a mother of 3. She has recently given birth and her husband had been recently admitted to hospital due to lung infection. As such, the family is experi...
+                </div>
+                <div style="height:25px; background:#FFF;">
+                 <img src="/passiton/slot/u13/homepage/delivery-cost-covered-by-donor.jpg"/>
+                </div>
+                <div class="item_footer" title="THK FSC @ Jurong">
+                 THK FSC @ Jurong
+                </div>
+               </div>
+              </td>
+             </tr>
+             <tr>
+              <td align="right" colspan="4">
+               <br/>
+               <div style="padding:10px;">
+                <b>
+                 <a href="/grant-a-wish">
+                  <img alt="see more" src="/passiton/slot/u13/seemore.jpg"/>
+                 </a>
+                </b>
+               </div>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </div>
+          <div class="iveo_pipe">
+           <img align="left" alt="" class="pipeobj" height="25" id="call://passiton/wishlist_latest" src="/pix/spacer.gif" style="width: 100%;" width="100%"/>
+          </div>
+         </div>
+        </div>
+        <div style="width: 630px; float: left; margin-top: 20px;">
+         <div class="iveo_pipe_passiton_donated_latest iveo_gencon ive_eobj_left" style="width: 630px;" width="630">
+          <style>
+           .donated_items {
+    background:#fff6d4; padding:20px;
+    -webkit-border-radius: 20px; -moz-border-radius: 20px; -o-border-radius: 20px; -ms-border-radius: 20px; -khtml-border-radius: 20px; border-radius: 20px;
+  }
+          </style>
+          <div class="donated_items">
+           <table border="0" height="240" width="100%">
+            <tbody>
+             <tr>
+              <td colspan="3">
+               <span style="color:#29a62e; font-size:16px; font-weight:bold;">
+                LATEST DONATED ITEMS
+               </span>
+               <br/>
+               <br/>
+              </td>
+             </tr>
+             <tr>
+              <td align="center">
+               <div style="cursor:pointer;">
+                <a href="/item-list">
+                 <img src="/passiton/slot/item_pics/.tn.16892157481.jpg.gif" width="80"/>
+                </a>
+                <br/>
+                <b>
+                 Baby Cot for 0-6 month old
+                </b>
+                <br/>
+                13 Jul 2023
+               </div>
+              </td>
+              <td align="center">
+               <div style="cursor:pointer;">
+                <a href="/item-list">
+                 <img src="/passiton/slot/item_pics/.tn.16892120781.jpeg.gif" width="80"/>
+                </a>
+                <br/>
+                <b>
+                 IKEA single bed frame with mattress
+                </b>
+                <br/>
+                13 Jul 2023
+               </div>
+              </td>
+              <td align="center">
+               <div style="cursor:pointer;">
+                <a href="/item-list">
+                 <img src="/passiton/slot/item_pics/.tn.16891691001.jpg.gif" width="80"/>
+                </a>
+                <br/>
+                <b>
+                 TV
+                </b>
+                <br/>
+                12 Jul 2023
+               </div>
+              </td>
+             </tr>
+             <tr>
+              <td align="right" colspan="3">
+               <br/>
+               <b>
+                <a href="/item-list">
+                 <img alt="see more" src="/passiton/slot/u13/seemore.jpg"/>
+                </a>
+               </b>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </div>
+          <div class="iveo_pipe">
+           <img align="left" alt="" class="pipeobj" id="call://passiton/donated_latest" src="/pix/spacer.gif" style="width: 630px;" width="630"/>
+          </div>
+         </div>
+        </div>
+        <div style="width: 350px; float: right; text-align: right; margin-top: 20px;">
+         <!--a href="/donate-fund"><img src="/passiton/slot/u13/homepage/button-donate-fund.png" width="324" height="49" /></a><br/>
+  <div style="padding-top:20px;"-->
+         <div class="iveo_pipe_passiton_testimonies iveo_gencon ive_eobj_right" style="width: 324px;" width="324">
+          <style>
+           .testimonies {
+		text-align:left;
+    background:#fff6d4; padding:20px;
+		height:260px; 
+    -webkit-border-radius: 20px; -moz-border-radius: 20px; -o-border-radius: 20px; -ms-border-radius: 20px; -khtml-border-radius: 20px; border-radius: 20px;
+  }
+          </style>
+          <div class="testimonies">
+           <table border="0" width="100%">
+            <tbody>
+             <tr>
+              <td>
+               <span style="color:#29a62e; font-size:16px; font-weight:bold;">
+                TESTIMONIES
+               </span>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               <div style="padding-top:8px; height:100px;">
+                It was in April this year that I sought help from As-Salaam Family Service Centre for used household items. I was then introduced to Pass It On by my family counselor. Only then did my...
+               </div>
+               <div style="padding-top:6px;font-weight:bold;">
+                Mdm D (35 years old)
+               </div>
+              </td>
+             </tr>
+             <tr>
+              <td align="right">
+               <b>
+                <a href="/testimonies">
+                 <img alt="see more" src="/passiton/slot/u13/seemore.jpg"/>
+                </a>
+               </b>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </div>
+          <div class="iveo_pipe">
+           <img align="right" alt="" class="pipeobj" height="100" id="call://passiton/testimonies" src="/pix/spacer.gif" style="width: 324px;" width="324"/>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="sitemenu_area">
+       <ul class="sitemenu">
+        <li class="PTSN_home first-item" id="PTID_8273">
+         <a class="sitemenu" href="/">
+          Home
+         </a>
+        </li>
+        <li class="PTSN_about-us" id="PTID_8281">
+         <a class="sitemenu" href="/about-us">
+          About Us
+         </a>
+        </li>
+        <li class="PTSN_grant-a-wish" id="PTID_8282">
+         <a class="sitemenu" href="/grant-a-wish-1">
+          Grant A Wish
+         </a>
+        </li>
+        <li class="PTSN_donate-item" id="PTID_8283">
+         <a class="sitemenu" href="/donate-item">
+          Donate Item
+         </a>
+        </li>
+        <li class="PTSN_item-list focus" id="PTID_8284">
+         <a class="sitemenu sitemenulit" href="/item-list">
+          Item List
+         </a>
+        </li>
+        <li class="PTSN_donate-fund" id="PTID_8285">
+         <a class="sitemenu" href="/donate-fund">
+          Donate Fund
+         </a>
+        </li>
+        <li class="PTSN_contact-us" id="PTID_8286">
+         <a class="sitemenu" href="/contact-us">
+          Contact Us
+         </a>
+        </li>
+        <li class="PTSN_vwo-list" id="PTID_8287">
+         <a class="sitemenu" href="/vwo-list">
+          VWO List
+         </a>
+        </li>
+        <li class="PTSN_grant-a-wish" id="PTID_8288">
+         <a class="sitemenu" href="/grant-a-wish">
+          Grant a Wish
+         </a>
+        </li>
+        <li class="PTSN_sign-up" id="PTID_8289">
+         <a class="sitemenu" href="/sign-up">
+          Sign Up
+         </a>
+        </li>
+        <li class="PTSN_latest-activities" id="PTID_8290">
+         <a class="sitemenu" href="/latest-activities">
+          Latest Activities
+         </a>
+        </li>
+        <li class="PTSN_edit-vwo" id="PTID_8291">
+         <a class="sitemenu" href="/edit-vwo">
+          Edit VWO
+         </a>
+        </li>
+        <li class="PTSN_edit-staff" id="PTID_8292">
+         <a class="sitemenu" href="/edit-staff">
+          Edit Staff
+         </a>
+        </li>
+        <li class="PTSN_add-user" id="PTID_8293">
+         <a class="sitemenu" href="/add-user">
+          Add User
+         </a>
+        </li>
+        <li class="PTSN_report" id="PTID_8294">
+         <a class="sitemenu" href="/report">
+          Report
+         </a>
+        </li>
+        <li class="PTSN_reserve-available-items" id="PTID_8295">
+         <a class="sitemenu" href="/reserve-available-items">
+          Reserve Available Items
+         </a>
+        </li>
+        <li class="PTSN_items-reserved-status" id="PTID_8296">
+         <a class="sitemenu" href="/items-reserved-status">
+          Items Reserved Status
+         </a>
+        </li>
+        <li class="PTSN_change-password" id="PTID_8297">
+         <a class="sitemenu" href="/change-password">
+          Change Password
+         </a>
+        </li>
+        <li class="PTSN_contact-admin" id="PTID_8298">
+         <a class="sitemenu" href="/contact-admin">
+          Contact Admin
+         </a>
+        </li>
+        <li class="PTSN_post-wishlist" id="PTID_8299">
+         <a class="sitemenu" href="/post-wishlist">
+          Post Wishlist
+         </a>
+        </li>
+        <li class="PTSN_terms-of-service" id="PTID_8300">
+         <a class="sitemenu" href="/terms-of-service">
+          Terms of Service
+         </a>
+        </li>
+        <li class="PTSN_privacy-policy" id="PTID_8301">
+         <a class="sitemenu" href="/privacy-policy">
+          Privacy Policy
+         </a>
+        </li>
+        <li class="PTSN_edit-vwo" id="PTID_8302">
+         <a class="sitemenu" href="/edit-vwo-1">
+          Edit VWO
+         </a>
+        </li>
+        <li class="PTSN_list-staff" id="PTID_8303">
+         <a class="sitemenu" href="/list-staff">
+          List Staff
+         </a>
+        </li>
+        <li class="PTSN_update-item-status" id="PTID_8304">
+         <a class="sitemenu" href="/update-item-status">
+          Update Item Status
+         </a>
+        </li>
+        <li class="PTSN_wishlist-editor" id="PTID_8306">
+         <a class="sitemenu" href="/wishlist-editor">
+          Wishlist Editor
+         </a>
+        </li>
+        <li class="PTSN_item-editor" id="PTID_8307">
+         <a class="sitemenu" href="/item-editor">
+          Item Editor
+         </a>
+        </li>
+        <li class="PTSN_moving-service-editor" id="PTID_8308">
+         <a class="sitemenu" href="/moving-service-editor">
+          Moving Service Editor
+         </a>
+        </li>
+        <li class="PTSN_vwo-editor" id="PTID_8309">
+         <a class="sitemenu" href="/vwo-editor">
+          VWO Editor
+         </a>
+        </li>
+        <li class="PTSN_approve-vwo-staff" id="PTID_8310">
+         <a class="sitemenu" href="/approve-vwo-staff">
+          Approve VWO Staff
+         </a>
+        </li>
+        <li class="PTSN_view-report" id="PTID_8311">
+         <a class="sitemenu" href="/view-report">
+          View Report
+         </a>
+        </li>
+        <li class="PTSN_approve-vwo" id="PTID_8312">
+         <a class="sitemenu" href="/approve-vwo">
+          Approve VWO
+         </a>
+        </li>
+        <li class="PTSN_view-report" id="PTID_8313">
+         <a class="sitemenu" href="/view-report-1">
+          View Report
+         </a>
+        </li>
+        <li class="PTSN_request-moving-service" id="PTID_8314">
+         <a class="sitemenu" href="/request-moving-service">
+          Request Moving Service
+         </a>
+        </li>
+        <li class="PTSN_view-staff-activity" id="PTID_8321">
+         <a class="sitemenu" href="/view-staff-activity">
+          View Staff Activity
+         </a>
+        </li>
+        <li class="PTSN_approve-user" id="PTID_8380">
+         <a class="sitemenu" href="/approve-user">
+          Approve User
+         </a>
+        </li>
+        <li class="PTSN_delete-user" id="PTID_8381">
+         <a class="sitemenu" href="/delete-user">
+          Delete User
+         </a>
+        </li>
+        <li class="PTSN_delete-wishlist" id="PTID_8383">
+         <a class="sitemenu" href="/delete-wishlist">
+          Delete Wishlist
+         </a>
+        </li>
+        <li class="PTSN_delete-item" id="PTID_8384">
+         <a class="sitemenu" href="/delete-item">
+          Delete Item
+         </a>
+        </li>
+        <li class="PTSN_testimonies" id="PTID_8385">
+         <a class="sitemenu" href="/testimonies">
+          Testimonies
+         </a>
+        </li>
+        <li class="PTSN_add-vwo" id="PTID_8386">
+         <a class="sitemenu" href="/add-vwo">
+          Add VWO
+         </a>
+        </li>
+        <li class="PTSN_list-reserved-items" id="PTID_8387">
+         <a class="sitemenu" href="/list-reserved-items">
+          List Reserved Items
+         </a>
+        </li>
+        <li class="PTSN_terms-of-service-for-donors" id="PTID_8388">
+         <a class="sitemenu" href="/terms-of-service-for-donors">
+          Terms of Service for Donors
+         </a>
+        </li>
+        <li class="PTSN_export" id="PTID_8389">
+         <a class="sitemenu" href="/export">
+          Export
+         </a>
+        </li>
+        <li class="PTSN_item-details" id="PTID_8390">
+         <a class="sitemenu" href="/item-details">
+          Item Details
+         </a>
+        </li>
+        <li class="PTSN_view-image" id="PTID_8391">
+         <a class="sitemenu" href="/view-image">
+          View Image
+         </a>
+        </li>
+        <li class="PTSN_reset-password" id="PTID_8392">
+         <a class="sitemenu" href="/reset-password">
+          Reset Password
+         </a>
+        </li>
+        <li class="PTSN_test-email" id="PTID_8399">
+         <a class="sitemenu" href="/test-email">
+          Test Email
+         </a>
+        </li>
+        <li class="PTSN_send-reminder" id="PTID_8417">
+         <a class="sitemenu" href="/send-reminder">
+          Send Reminder
+         </a>
+        </li>
+        <li class="PTSN_profile" id="PTID_8505">
+         <a class="sitemenu" href="/profile">
+          Profile
+         </a>
+        </li>
+        <li class="PTSN_faq" id="PTID_8512">
+         <a class="sitemenu" href="/faq">
+          FAQ
+         </a>
+        </li>
+        <li class="PTSN_users" id="PTID_8513">
+         <a class="sitemenu" href="/users">
+          Users
+         </a>
+        </li>
+        <li class="PTSN_mail-template" id="PTID_8514">
+         <a class="sitemenu" href="/mail-template">
+          Mail Template
+         </a>
+        </li>
+        <li class="PTSN_get-recipients" id="PTID_8515">
+         <a class="sitemenu" href="/get-recipients">
+          Get Recipients
+         </a>
+        </li>
+        <li class="PTSN_forgot-password" id="PTID_8516">
+         <a class="sitemenu" href="/forgot-password">
+          Forgot Password
+         </a>
+        </li>
+        <li class="PTSN_item-status-reminder" id="PTID_9131">
+         <a class="sitemenu" href="/item-status-reminder">
+          Item Status Reminder
+         </a>
+        </li>
+        <li class="PTSN_related-wishlists" id="PTID_9135">
+         <a class="sitemenu" href="/related-wishlists">
+          Related Wishlists
+         </a>
+        </li>
+       </ul>
+      </div>
+      <div class="masthead2_area">
+      </div>
+      <div class="content_area">
+       <div class="top">
+       </div>
+       <div class="mid">
+        <div class="path_box">
+         <a class="path" href="/">
+          Home
+         </a>
+         &gt;
+Item List
+        </div>
+        <div class="pagecontent_box">
+         <div class="tools_box">
+         </div>
+         <h1 class="ive_editable" id="_ptoh_8284">
+          Item List
+         </h1>
+         <div class="description ive_editable ive_ptod ive_content" id="_ptod_8284">
+          <div class="iveo_pipe_passiton_vwo_nav iveo_gencon" style="display:table" width="280px">
+           <script>
+            function createCookie(name,value,days) {
+    if (days) {
+      var date = new Date();
+      date.setTime(date.getTime()+(days*24*60*60*1000));
+      var expires = "; expires="+date.toGMTString();
+    }
+    else var expires = "";
+    //document.cookie = name+"="+value+expires+"; path=/";
+    document.cookie = name+"="+value+"; path=/";
+  }
+
+  function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+      var c = ca[i];
+      while (c.charAt(0)==' ') c = c.substring(1,c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+  }
+
+	function showNotice() {
+		$('#notice_div').show();
+		setTimeout(function(){ $('#notice_div').hide() },10000);
+	}
+
+  function promptUpdateStatus() {
+    var updateItem = "";
+    var updateWL = "";
+    var msg = "";
+
+    if(updateItem=='1') {
+			msg += "Please update status for reserved item(s) more than 30 days ago.<br>";
+    }
+    if(updateWL=='1') {
+			msg += "Please update status for responded wishlist(s) more than 30 days ago.<br>";
+    }
+    if(msg != "") {
+			msg += "<br>";
+			$('#div_rmdr').html ( msg );
+    }
+  }
+
+
+  $(function() {
+		promptUpdateStatus();
+
+		/*
+		if( location.href == 'http://www.passiton.url3.net/' || location.href == 'https://www.passiton.org.sg/' || location.href == 'https://passiton.org.sg/' ){
+			if( readCookie('piovisited')=='1' ) {
+				$('#notice_div').hide();
+			} else {		
+				createCookie ('piovisited', '1', 1000);
+				showNotice();
+			}
+		}
+		*/
+		
+
+		if( $('#pagetitle').html() ) {
+			document.title = $('#pagetitle').html();
+		}
+	});
+           </script>
+           <style>
+            #pagetitle { font-weight:bold; }
+           </style>
+           <!--START_VWO_NAV-->
+           <script>
+            $('#login-box').show();
+           </script>
+           <!--END_VWO_NAV-->
+           <script>
+            var imgs = new Array();
+	var bannerIdx = 0;
+	var maxIdx = 0;
+
+	
+	function rotateBanner() {
+		if(bannerIdx < maxIdx-1) {
+			bannerIdx++;
+		} else {
+			bannerIdx= 0;
+		}
+		for(var i=0; i<maxIdx; i++) {
+			if(i!=bannerIdx) {
+				$('#div_select_page0'+i).attr('class', 'page');
+			} else {
+				$('#div_select_page0'+i).attr('class', 'page_selected');
+			}
+		}
+		// $('#img_banner').attr('src', "/passiton/slot/u13/homepage-banners/homepage-banner-0"+bannerIdx+".jpg");
+		if(imgs[bannerIdx]) {
+			$('#img_banner').attr('src', "/passiton/slot/u13/homepage-banners/"+imgs[bannerIdx]);
+		}
+		setTimeout(function(){ rotateBanner()},10000);
+	}
+
+	function selectPage (page) {
+		// $('#img_banner').attr('src', "/passiton/slot/u13/homepage-banners/homepage-banner-0"+page+".jpg");
+		$('#img_banner').attr('src', "/passiton/slot/u13/homepage-banners/"+imgs[page]);
+		for(var i=0; i<maxIdx; i++) {
+			if(i!=page) {
+				$('#div_select_page0'+i).attr('class', 'page');
+			} else {
+				$('#div_select_page0'+i).attr('class', 'page_selected');
+			}
+		}
+		bannerIdx = page;
+	}
+
+	$( ".page" ).hover(function() {
+		$( this ).css( 'background-color', '#7F7F7F' );
+	});
+           </script>
+           <style>
+            .page { font-size:90%;font-weight:bold;float:left;padding-top:5px;margin-left:6px;width:25px;height:20px;background:#EBEBEB;text-align:center; }
+	.page_selected { font-size:90%;font-weight:bold;float:left;padding-top:5px;margin-left:6px;width:25px;height:20px;background:#7F7F7F;color:#FFF;text-align:center; }
+           </style>
+           <div id="notice_div" style="position:absolute; top:100px; text-align:center; width:100%; display:none; z-index:99;">
+            <img src="/passiton/slot/u13/notice.jpg"/>
+           </div>
+           <img id="img_banner" src="/passiton/slot/u13/banners/item_list.jpg" style="width:980px;"/>
+           <br/>
+           <table style="margin-top:8px;" width="1000">
+            <tbody>
+             <tr>
+              <td>
+              </td>
+              <td align="right" style="text-align:right;">
+               <div style="padding-right:20px;">
+                <a href="/donate-item">
+                 <img alt="Donate" src="/passiton/slot/u13/donate2.png" width="276"/>
+                </a>
+               </div>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+           <div class="iveo_pipe">
+            <img alt="" class="pipeobj" id="call://passiton/vwo_nav" src="/pix/spacer.gif"/>
+           </div>
+          </div>
+          <div>
+           <div class="iveo_pipe_passiton_list_item iveo_gencon ive_eobj_left" style="display:table" width="280px">
+            <script>
+             $(function() {
+				updateSubcategory();
+				
+    $('.item_desc').each(function() {
+      if($(this).height() > 55) {
+        $(this).css('height', '55px');
+        $(this).css('overflow', 'hidden');
+      } else {
+        var divid = $(this).attr('id');
+        var id = divid.replace('desc_', '');
+        $('#desclink_'+id).hide();
+      }
+    });
+		
+  });
+
+	function resetForm() {
+		$('.search_fields').each(function() {
+			$(this).val('');
+		});
+	}
+
+	function submitSearch() {
+		/*
+		if(!$('#ItemCat1').val() && !$('#ItemSubCat1').val() && !$('#search_id').val()) {
+			alert("Please enter id or select category");
+			return;
+		}
+		*/
+		$('#f').submit();
+	}
+
+	function reserveItem(id) {
+    var href = location.href;
+    if(!location.href.lastIndexOf('?')) {
+      location.href = href+'?edit=1&id='+id;
+    } else {
+      location.href = href+'&edit=1&id='+id;
+    }
+	}
+
+  function editItem(id) {
+    var href = location.href;
+    if(!location.href.lastIndexOf('?')) {
+      location.href = href+'?edit=1&id='+id;
+    } else {
+      location.href = href+'&edit=1&id='+id;
+    }
+  }
+
+  function requestMS(id) {
+    location.href = '/moving-service-editor?edit=1&item_id='+id;
+  }
+
+	function deleteItem(id) {
+		if(confirm("Are you sure you want to delete this item?")) {
+			location.href="/delete-item?id="+id;
+
+		}
+	}
+
+	function showDesc(id) {
+		$('#desc_'+id).css('height', 'auto');
+		$('#desclink_'+id).hide();
+	}
+            </script>
+            <script>
+             var subcategory3 = new Array ( 'Bed c/w mattress', 'Bed Frame w/o mattress', 'Bedding Accessories', 'Chairs',
+																	'Chest of Drawers', 'Cupboard', 'Desk - multi-purposes', 'Dining Table',
+																	'Display/Cabinet/Cupboard/shelves', 'Double-Decker Bed w/mattress', 'Double-Decker Bed w/o mattress', 'Dressing Table',
+																	'Queen-size Mattress', 'Single-size Mattress', 'Sofa - 2 or 3 seaters sofabed', 'Table - study/computer/coffee/side',
+																	'TV Rack/Stand/Console', 'Wardrobe', 'Others' );
+	
+
+  var subcategory2 = new Array ('Bar Fridge', 'Blender', 'Bread Toaster', 'Clothes Dryer', 'Coffee Maker', 'Electric Kettle', 'Electric Oven', 'Electric Water Dispenser/Boiler',
+                                'Floor-standing Fan', 'Floor-standing Lamp', 'Food Mixer', 'Induction Cooker', 'Microwave Oven', 'Oven Toaster', 'Radio HiFi Compo Set',
+                                'Refrigerator', 'Rice Cooker', 'Slow Cooker', 'Table Fan', 'Table Lamp', 'Television', 'Vacuum Cleaner', 'Washing Machine', 'Others');
+
+	var subcategory6 = new Array ('Bicycle', 'Electone Keyboard', 'Electric Organ', 'Exercise Equipment', 'Guitar Piano', 'Musical Equipment', 
+																'Massaging/Fitness Equipment', 'Treadmill', 'Others');
+
+  var subcategory8 = new Array ('Blood Pressure Measuring Meter', 'Blood Sugar Measuring Meter', 'Diapers (Adult)', 'Weighing Scale', 'Others');
+
+  var subcategory9 = new Array ('Commode w/pot and Cover Collapsible', 'Commode w/pot and Cover on Wheels - Aluminium', 'Commode w/pot and Cover on Wheels - Detachable',
+                                'Commode w/pot and Cover Stationary', 'Crutches - single or pair', 'Hospital Bed', 'Hospital Bed Mattress', 'Walking Frame - Foldable',
+                                'Walking Frame - Fixed', 'Walking Stick - Broad Base', 'Walking Stick - Narrow Base', 'Walking Stick - Single Legged',
+                                'Wheel Chair - Standard Fixed Foot and Armrest', 'Others');
+
+  var subcategory7 = new Array ('Assessment Books', 'Computer - Desktop', 'Computer - Laptop', 'Magazines', 'Past Year&apos;s Exam Papers', 'Ten-Year Series',
+																'Text Books', 'Others');
+
+  var subcategory5 = new Array ('Chopping Board', 'Cups/Bowls/Saucers', 'Cutlery and Crokery', 'Knives', 'Pots and Pans', 'Others');
+
+  var subcategory1 = new Array ('Adult (Female) dress/pants/casual', 'Adult (Male) shirts/pants/casual', 'Adult (Uni) shirts/pants/casual', 'Children (Female) dress/pants/casual',
+                                'Children (Male) shirts/pants/casual', 'Children (Uni) shirts/pants/casual', 'Teenage (Female) dress/pants/casual',
+                                'Teenage (Male) shirts/pants/casual', 'Teenage (Uni) shirts/pants/casual', 'Others');
+
+  var subcategory4 = new Array ('Baby Awaken Alert', 'Baby Bathtub', 'Baby Chair', 'Baby Changing Table', 'Baby Cot/Crib w/mattress', 'Baby Cot/Crib w/o mattress',
+                                'Baby Pram/Stroller', 'Baby Swing/Sarong Stand', 'Baby/Child High Chair', 'Baby/Children Clothings', 'Breastpump', 'Cradle', 'Diapers',
+                                'Feeding Bottle', 'Infant/Children Toys', 'Milk Bottle Warmer', 'Playpen', 'Steam Sterilizer', 'Walker for Baby', 'Others');
+
+  var subcategory10= new Array ('Others');
+
+  var subcategory = new Array ( subcategory1, subcategory2, subcategory3, subcategory4, subcategory5, subcategory6, subcategory7, subcategory8, subcategory9, subcategory10 );
+
+  function updateSubcategory () {
+
+
+
+		if( document.getElementById('ItemCat1') ) {
+			var idx= document.getElementById('ItemCat1').selectedIndex - 1;
+
+			var s = $('#ItemSubCat1');
+			s.html('');
+			$('<option />', { value: '', text: ''}).appendTo(s);
+
+			if(subcategory[idx]) {
+				for(var i=0; i<subcategory[idx].length; i++) {
+					$('<option />', { value: subcategory[idx][i], text: subcategory[idx][i]}).appendTo(s);
+				}
+			}
+		}
+		
+		if(location.href.indexOf('/donate-item') > 0) {
+
+			if ( $('#ItemCat1').val() != '' ) {
+				if(jQuery.inArray($('#ItemCat1').val(), wishlist_cats) !== -1) {
+					$("#related_wishlists").html ( "Please take a look at these <a href='javascript:void(0);' onclick='view_related_wl()' >wishlists</a> that you might be able to grant instead of donating the item." );
+				} else {
+					$("#related_wishlists").html ( "" );
+				}
+
+			}
+
+		}
+  }
+            </script>
+            <style>
+             .tbl_form1 { width:970px; }
+  .tbl_form1 th { width:250px; padding:10px; font-weight:bold; vertical-align:top; background:#999; color:#FFF; }
+  .tbl_form1 td { padding:10px; vertical-align:top;  height:35px; }
+            </style>
+            <span class="section_header">
+             <div style="float:left">
+              Item List
+             </div>
+             <div style="font-size:1px;clear:both;">
+             </div>
+            </span>
+            <br/>
+            <a name="top">
+            </a>
+            <br/>
+            <form id="f" method="GET" name="f">
+             <input name="search" type="hidden" value="1"/>
+             <table class="">
+              <tbody>
+               <tr>
+                <td>
+                 <select name="search_by" style="width:100px;">
+                  <option value="id">
+                   ID
+                  </option>
+                  <option value="title">
+                   Title
+                  </option>
+                  <option value="donor_email">
+                   Donor Email
+                  </option>
+                  <option value="donor_location">
+                   Donor Location
+                  </option>
+                  <option value="donor_contact">
+                   Donor Contact
+                  </option>
+                 </select>
+                </td>
+                <td>
+                 <input class="search_fields" id="search_id" name="search_id" style="width:180px;" type="text" value=""/>
+                </td>
+                <td>
+                 Category
+                </td>
+                <td>
+                 <select class="slct search_fields" id="ItemCat1" name="ItemCat1" onchange="updateSubcategory()">
+                  <option value="">
+                   - Please select a category -
+                  </option>
+                  <option value="Attires/Clothings">
+                   Attires/Clothings
+                  </option>
+                  <option value="Electrical Home Appliances">
+                   Electrical Home Appliances
+                  </option>
+                  <option value="Home Furnishing">
+                   Home Furnishing
+                  </option>
+                  <option value="Infant and Children Items">
+                   Infant and Children Items
+                  </option>
+                  <option value="Kitchen Utility Items">
+                   Kitchen Utility Items
+                  </option>
+                  <option value="Leisure and Healthy Lifestyle">
+                   Leisure and Healthy Lifestyle
+                  </option>
+                  <option value="Learning Aids">
+                   Learning Aids
+                  </option>
+                  <option value="Medical Aids">
+                   Medical Aids
+                  </option>
+                  <option value="Mobility Aids">
+                   Mobility Aids
+                  </option>
+                  <option value="Others">
+                   Others
+                  </option>
+                 </select>
+                </td>
+                <td>
+                 Sub Category
+                </td>
+                <td>
+                 <select class="slct search_fields" id="ItemSubCat1" name="ItemSubCat1">
+                  <option value="">
+                  </option>
+                 </select>
+                </td>
+                <td>
+                 <a class="button2_" href="javascript:submitSearch();">
+                  Search
+                 </a>
+                 <!--a href="javascript:document.getElementById('f').reset();" class="button2_" >Reset</a-->
+                 <a class="button2_" href="javascript:resetForm();">
+                  Reset
+                 </a>
+                </td>
+               </tr>
+               <tr>
+                <td align="right" colspan="7">
+                 <br/>
+                 Total:
+                 <b>
+                  66
+                 </b>
+                 | Page:
+                 <b>
+                  1
+                 </b>
+                 <a href="/item-list?&amp;pg=2">
+                  2
+                 </a>
+                 <a href="/item-list?&amp;pg=3">
+                  3
+                 </a>
+                 <a href="/item-list?&amp;pg=4">
+                  4
+                 </a>
+                </td>
+               </tr>
+              </tbody>
+             </table>
+            </form>
+            <!--
+
+<img src="/passiton/slot/u13/donate.png" alt="Passiton"  />
+
+ID
+Description
+Location<br/>Collection/Delivery
+Picture
+Validity<br/>Item Age<br/>Dimension
+
+-->
+            <table class="tbl_form1">
+             <tbody>
+              <tr>
+               <th style="width:20px;">
+                ID
+               </th>
+               <th style="">
+                NAME
+                <br/>
+                DESCRIPTION
+               </th>
+               <th>
+                LOCATION
+                <br/>
+                Collection/Delivery
+               </th>
+               <th>
+                PICTURE
+               </th>
+               <th>
+                VALIDITY
+                <br/>
+                Item Age
+                <br/>
+                Dimension
+               </th>
+              </tr>
+              <tr class="lineEven">
+               <td style="width:20px;">
+                127937
+               </td>
+               <td>
+                <b>
+                 Pro Digital wrist bp Monitors meters tonometer sphygmomanometer cuff automatic health care monitors 100% Top Good
+                </b>
+                <br/>
+                <div class="item_desc" id="desc_127937" style="width: 300px; height: 55px; overflow: hidden;">
+                 Features:
+100% Brand new and high quality!
+Using the oscillometric blood pressure measurement,Accurately measure the blood pressure
+Intelligent presurize,live nonvoice (optional),Serial port (optional)
+Voltage power detection,Low power consumption
+LCD digital display,legible
+Intelligent pressure
+WHO warning message function
+Double mode,each of the 90 set of measurements of memory
+The overpressure protection function.
+An irregular heartbeat tips
+The clock feature
+
+
+Specification:
+Condition: new 
+Product size: 71*73*32mm (wristband not included) 
+Wristband range: 135~195mm 
+Display: LCD digital display screen 
+Measurement range: blood pressure 0~280mmHg pulse 40~199 times / min 
+Compression method: automatic pressurizing pump 
+Reducing the way: solenoid valve control pressure 
+Measurement error: blood pressure + 3% heart rate + 5% 
+Memory capacity: 90 sets of measurement data and time 
+Pressure sensing: semiconductor pressure sensor 
+Power supply: 2 AAA battery 
+Measurement interval: 1mmHg 
+Operating temperature and humidity: ~+40 C +10 C /40%~85%R.H. 
+Preservation of temperature and humidity: +50 C -20~ C /15%~90%R.H. 
+Weight:200g
+
+
+Package includes:
+1x Digital Wrist Bp Blood Pressure Monitor Meter
+                </div>
+                <span id="desclink_127937">
+                 <a href="javascript:void(0);" onclick="showDesc('127937')">
+                  more
+                 </a>
+                </span>
+               </td>
+               <td>
+                <b>
+                </b>
+                <br/>
+                <img src="/passiton/slot/u13/homepage/delivery-cost-covered-by-donor.jpg"/>
+               </td>
+               <td nowrap="nowrap">
+                <a href="/view-image?id=127937" target="_blank">
+                 <img src="/passiton/slot/item_pics/.tn.17000193471.jpeg.gif" width="50"/>
+                </a>
+               </td>
+               <td>
+                valid til 15 Dec 2023
+                <br/>
+                1 year
+                <br/>
+                -
+               </td>
+              </tr>
+              <tr class="lineOdd">
+               <td style="width:20px;">
+                127932
+               </td>
+               <td>
+                <b>
+                 Stroller
+                </b>
+                <br/>
+                <div class="item_desc" id="desc_127932" style="width:300px;">
+                 Brand new stroller - unused. For all age group. Newborn till 6 years old.
+                </div>
+                <span id="desclink_127932" style="display: none;">
+                 <a href="javascript:void(0);" onclick="showDesc('127932')">
+                  more
+                 </a>
+                </span>
+               </td>
+               <td>
+                <b>
+                 Jurong
+                </b>
+                <br/>
+                <img src="/passiton/slot/u13/homepage/delivery-cost-covered-by-donor.jpg"/>
+               </td>
+               <td nowrap="nowrap">
+                <a href="/view-image?id=127932" target="_blank">
+                 <img class="img_rotate1" src="/passiton/slot/item_pics/.tn.17000150361.jpg.gif" width="50"/>
+                </a>
+               </td>
+               <td>
+                valid til 15 Dec 2023
+                <br/>
+                1 year
+                <br/>
+                11.81" L x 19.69" W x 28.94"
+               </td>
+              </tr>
+              <tr class="lineEven">
+               <td style="width:20px;">
+                127931
+               </td>
+               <td>
+                <b>
+                 Study table and chair
+                </b>
+                <br/>
+                <div class="item_desc" id="desc_127931" style="width:300px;">
+                 Good condition study table and chair
+                </div>
+                <span id="desclink_127931" style="display: none;">
+                 <a href="javascript:void(0);" onclick="showDesc('127931')">
+                  more
+                 </a>
+                </span>
+               </td>
+               <td>
+                <b>
+                 Serangoon Garden, Hougang, Ponggol
+                </b>
+                <br/>
+                <img src="/passiton/slot/u13/homepage/delivery-cost-covered-by-donor.jpg"/>
+               </td>
+               <td nowrap="nowrap">
+                <a href="/view-image?id=127931" target="_blank">
+                 <img class="img_rotate1" src="/passiton/slot/item_pics/.tn.17000148531.jpeg.gif" width="50"/>
+                </a>
+               </td>
+               <td>
+                valid til 15 Dec 2023
+                <br/>
+                3 year
+                <br/>
+                -
+               </td>
+              </tr>
+              <tr class="lineOdd">
+               <td style="width:20px;">
+                127930
+               </td>
+               <td>
+                <b>
+                 Chest Drawer
+                </b>
+                <br/>
+                <div class="item_desc" id="desc_127930" style="width: 300px; height: 55px; overflow: hidden;">
+                 Very good condition, sturdy wood material. For delivery I would like a quote first to decide if I will use the delivery service or arrange on my end.
+                </div>
+                <span id="desclink_127930">
+                 <a href="javascript:void(0);" onclick="showDesc('127930')">
+                  more
+                 </a>
+                </span>
+               </td>
+               <td>
+                <b>
+                 Hougang
+                </b>
+                <br/>
+                <img src="/passiton/slot/u13/homepage/delivery-cost-covered-by-donor.jpg"/>
+               </td>
+               <td nowrap="nowrap">
+                <a href="/view-image?id=127930" target="_blank">
+                 <img class="img_rotate1" src="/passiton/slot/item_pics/.tn.17000142591.jpg.gif" width="50"/>
+                </a>
+                <a href="/view-image?id=127930&amp;i=2" target="_blank">
+                 <img class="img_rotate1" src="/passiton/slot/item_pics/.tn.17000142612.jpg.gif" width="50"/>
+                </a>
+               </td>
+               <td>
+                valid til 15 Dec 2023
+                <br/>
+                2 year
+                <br/>
+                -
+               </td>
+              </tr>
+              <tr class="lineEven">
+               <td style="width:20px;">
+                127925
+               </td>
+               <td>
+                <b>
+                 Nike Sneakers for Toddler
+                </b>
+                <br/>
+                <div class="item_desc" id="desc_127925" style="width:300px;">
+                 Nike sizing: 9C
+suitable for kids between 1 year old onwards to 2 plus.
+                </div>
+                <span id="desclink_127925" style="display: none;">
+                 <a href="javascript:void(0);" onclick="showDesc('127925')">
+                  more
+                 </a>
+                </span>
+               </td>
+               <td>
+                <b>
+                 Yishun, Sembawang
+                </b>
+                <br/>
+                <img src="/passiton/slot/u13/homepage/delivery-cost-covered-by-donor.jpg"/>
+               </td>
+               <td nowrap="nowrap">
+                <a href="/view-image?id=127925" target="_blank">
+                 <img src="/passiton/slot/item_pics/.tn.17000081941.jpg.gif" width="50"/>
+                </a>
+                <a href="/view-image?id=127925&amp;i=2" target="_blank">
+                 <img src="/passiton/slot/item_pics/.tn.17000081952.jpg.gif" width="50"/>
+                </a>
+                <a href="/view-image?id=127925&amp;i=3" target="_blank">
+                 <img src="/passiton/slot/item_pics/.tn.17000081953.jpg.gif" width="50"/>
+                </a>
+               </td>
+               <td>
+                valid til 15 Dec 2023
+                <br/>
+                2 year
+                <br/>
+                -
+               </td>
+              </tr>
+              <tr class="lineOdd">
+               <td style="width:20px;">
+                127924
+               </td>
+               <td>
+                <b>
+                 Dining table
+                </b>
+                <br/>
+                <div class="item_desc" id="desc_127924" style="width:300px;">
+                 A glass top dining table with 3 chairs .
+                </div>
+                <span id="desclink_127924" style="display: none;">
+                 <a href="javascript:void(0);" onclick="showDesc('127924')">
+                  more
+                 </a>
+                </span>
+               </td>
+               <td>
+                <b>
+                 Katong, Joo Chiat, Amber Road
+                </b>
+                <br/>
+                <img src="/passiton/slot/u13/homepage/delivery-cost-covered-by-donor.jpg"/>
+               </td>
+               <td nowrap="nowrap">
+                <a href="/view-image?id=127924" target="_blank">
+                 <img src="/passiton/slot/item_pics/.tn.16999796031.jpg.gif" width="50"/>
+                </a>
+               </td>
+               <td>
+                valid til 15 Dec 2023
+                <br/>
+                4 year
+                <br/>
+                1.3m x 0.8m x 0.75m
+               </td>
+              </tr>
+              <tr class="lineEven">
+               <td style="width:20px;">
+                127922
+               </td>
+               <td>
+                <b>
+                 IKEA DESKTOP ORGANISER
+                </b>
+                <br/>
+                <div class="item_desc" id="desc_127922" style="width:300px;">
+                 Desktop organiser to create extra space. 
+3 of these available
+                </div>
+                <span id="desclink_127922" style="display: none;">
+                 <a href="javascript:void(0);" onclick="showDesc('127922')">
+                  more
+                 </a>
+                </span>
+               </td>
+               <td>
+                <b>
+                 Tampines, Pasir Ris
+                </b>
+                <br/>
+                <img src="/passiton/slot/u13/homepage/delivery-cost-covered-by-donor.jpg"/>
+               </td>
+               <td nowrap="nowrap">
+                <a href="/view-image?id=127922" target="_blank">
+                 <img src="/passiton/slot/item_pics/.tn.16999770571.jpeg.gif" width="50"/>
+                </a>
+                <a href="/view-image?id=127922&amp;i=2" target="_blank">
+                 <img src="/passiton/slot/item_pics/.tn.16999770572.jpeg.gif" width="50"/>
+                </a>
+                <a href="/view-image?id=127922&amp;i=3" target="_blank">
+                 <img src="/passiton/slot/item_pics/.tn.16999770573.jpeg.gif" width="50"/>
+                </a>
+               </td>
+               <td>
+                valid til 14 Dec 2023
+                <br/>
+                2 year
+                <br/>
+                -
+               </td>
+              </tr>
+              <tr class="lineOdd">
+               <td style="width:20px;">
+                127921
+               </td>
+               <td>
+                <b>
+                 Brand new electric kettle
+                </b>
+                <br/>
+                <div class="item_desc" id="desc_127921" style="width: 300px; height: 55px; overflow: hidden;">
+                 Brand new unopened electric kettle 1.7L, still in box. Bought an extra one by mistake and would like to pass it on to someone who will make use of it. Brand: PowerPac
+                </div>
+                <span id="desclink_127921">
+                 <a href="javascript:void(0);" onclick="showDesc('127921')">
+                  more
+                 </a>
+                </span>
+               </td>
+               <td>
+                <b>
+                </b>
+                <br/>
+                <img src="/passiton/slot/u13/homepage/delivery-cost-covered-by-donor.jpg"/>
+               </td>
+               <td nowrap="nowrap">
+                <a href="/view-image?id=127921" target="_blank">
+                 <img class="img_rotate1" src="/passiton/slot/item_pics/.tn.16999719011.jpeg.gif" width="50"/>
+                </a>
+                <a href="/view-image?id=127921&amp;i=2" target="_blank">
+                 <img class="img_rotate1" src="/passiton/slot/item_pics/.tn.16999719022.jpg.gif" width="50"/>
+                </a>
+               </td>
+               <td>
+                valid til 14 Dec 2023
+                <br/>
+                1 year
+                <br/>
+                -
+               </td>
+              </tr>
+              <tr class="lineEven">
+               <td style="width:20px;">
+                127912
+               </td>
+               <td>
+                <b>
+                 Computer table and chair set
+                </b>
+                <br/>
+                <div class="item_desc" id="desc_127912" style="width: 300px; height: 55px; overflow: hidden;">
+                 Standing/sitting computer table (adjustable height 80cm to 123cm) - 110cm (length) by 52cm (width).
+
+Conputer chair with wheels 
+(Adjustable height 116cm to 128cm) - 65cm (length) by 55cm (width)
+                </div>
+                <span id="desclink_127912">
+                 <a href="javascript:void(0);" onclick="showDesc('127912')">
+                  more
+                 </a>
+                </span>
+               </td>
+               <td>
+                <b>
+                 Bedok, Upper East Coast, Eastwood, Kew Drive
+                </b>
+                <br/>
+                <img src="/passiton/slot/u13/homepage/delivery-cost-covered-by-donor.jpg"/>
+               </td>
+               <td nowrap="nowrap">
+                <a href="/view-image?id=127912" target="_blank">
+                 <img src="/passiton/slot/item_pics/.tn.16999568201.jpg.gif" width="50"/>
+                </a>
+                <a href="/view-image?id=127912&amp;i=2" target="_blank">
+                 <img src="/passiton/slot/item_pics/.tn.16999568222.jpg.gif" width="50"/>
+                </a>
+                <a href="/view-image?id=127912&amp;i=3" target="_blank">
+                 <img src="/passiton/slot/item_pics/.tn.16999568243.jpg.gif" width="50"/>
+                </a>
+               </td>
+               <td>
+                valid til 30 Nov 2023
+                <br/>
+                4 year
+                <br/>
+                Refer to description
+               </td>
+              </tr>
+              <tr class="lineOdd">
+               <td style="width:20px;">
+                127901
+               </td>
+               <td>
+                <b>
+                 Anmum Lacta
+                </b>
+                <br/>
+                <div class="item_desc" id="desc_127901" style="width:300px;">
+                 2 boxes of Formulated Milk Powder for Lactating Women
+                </div>
+                <span id="desclink_127901" style="display: none;">
+                 <a href="javascript:void(0);" onclick="showDesc('127901')">
+                  more
+                 </a>
+                </span>
+               </td>
+               <td>
+                <b>
+                 Hillview, Dairy Farm, Bukit Panjang, Choa Chu Kang
+                </b>
+                <br/>
+                <img src="/passiton/slot/u13/homepage/delivery-cost-covered-by-donor.jpg"/>
+               </td>
+               <td nowrap="nowrap">
+                <a href="/view-image?id=127901" target="_blank">
+                 <img src="/passiton/slot/item_pics/.tn.16999494491.jpg.gif" width="50"/>
+                </a>
+               </td>
+               <td>
+                valid til 14 Dec 2023
+                <br/>
+                1 year
+                <br/>
+                -
+               </td>
+              </tr>
+              <tr class="lineEven">
+               <td style="width:20px;">
+                127900
+               </td>
+               <td>
+                <b>
+                 Dining Table and 6 Chairs (with covers)
+                </b>
+                <br/>
+                <div class="item_desc" id="desc_127900" style="width:300px;">
+                 A large pull extendable dining table and 6 chairs.  Old but still in good condition. Chair covers included.
+                </div>
+                <span id="desclink_127900" style="display: none;">
+                 <a href="javascript:void(0);" onclick="showDesc('127900')">
+                  more
+                 </a>
+                </span>
+               </td>
+               <td>
+                <b>
+                 Orchard, Cairnhill, River Valley
+                </b>
+                <br/>
+                <img src="/passiton/slot/u13/homepage/delivery-cost-covered-by-donor.jpg"/>
+               </td>
+               <td nowrap="nowrap">
+                <a href="/view-image?id=127900" target="_blank">
+                 <img class="img_rotate1" src="/passiton/slot/item_pics/.tn.16999493111.jpeg.gif" width="50"/>
+                </a>
+                <a href="/view-image?id=127900&amp;i=2" target="_blank">
+                 <img class="img_rotate1" src="/passiton/slot/item_pics/.tn.16999493122.jpeg.gif" width="50"/>
+                </a>
+                <a href="/view-image?id=127900&amp;i=3" target="_blank">
+                 <img class="img_rotate1" src="/passiton/slot/item_pics/.tn.16999493123.jpeg.gif" width="50"/>
+                </a>
+               </td>
+               <td>
+                valid til 14 Dec 2023
+                <br/>
+                4 year
+                <br/>
+                -
+               </td>
+              </tr>
+              <tr class="lineOdd">
+               <td style="width:20px;">
+                127894
+               </td>
+               <td>
+                <b>
+                 Brand new baby shoe
+                </b>
+                <br/>
+                <div class="item_desc" id="desc_127894" style="width:300px;">
+                 soft sole baby shoe. length 15cm
+                </div>
+                <span id="desclink_127894" style="display: none;">
+                 <a href="javascript:void(0);" onclick="showDesc('127894')">
+                  more
+                 </a>
+                </span>
+               </td>
+               <td>
+                <b>
+                 Serangoon Garden, Hougang, Ponggol
+                </b>
+                <br/>
+                <img src="/passiton/slot/u13/homepage/delivery-cost-covered-by-donor.jpg"/>
+               </td>
+               <td nowrap="nowrap">
+                <a href="/view-image?id=127894" target="_blank">
+                 <img src="/passiton/slot/item_pics/.tn.16999425151.jpg.gif" width="50"/>
+                </a>
+                <a href="/view-image?id=127894&amp;i=2" target="_blank">
+                 <img src="/passiton/slot/item_pics/.tn.16999425152.jpg.gif" width="50"/>
+                </a>
+               </td>
+               <td>
+                valid til 14 Dec 2023
+                <br/>
+                1 year
+                <br/>
+                15cm
+               </td>
+              </tr>
+              <tr class="lineEven">
+               <td style="width:20px;">
+                127893
+               </td>
+               <td>
+                <b>
+                 Brand new toddlers shoe
+                </b>
+                <br/>
+                <div class="item_desc" id="desc_127893" style="width:300px;">
+                 brand new shoes for toddlers. length is 15.5cm
+                </div>
+                <span id="desclink_127893" style="display: none;">
+                 <a href="javascript:void(0);" onclick="showDesc('127893')">
+                  more
+                 </a>
+                </span>
+               </td>
+               <td>
+                <b>
+                 Serangoon Garden, Hougang, Ponggol
+                </b>
+                <br/>
+                <img src="/passiton/slot/u13/homepage/delivery-cost-covered-by-donor.jpg"/>
+               </td>
+               <td nowrap="nowrap">
+                <a href="/view-image?id=127893" target="_blank">
+                 <img src="/passiton/slot/item_pics/.tn.16999423881.jpg.gif" width="50"/>
+                </a>
+                <a href="/view-image?id=127893&amp;i=2" target="_blank">
+                 <img src="/passiton/slot/item_pics/.tn.16999423892.jpg.gif" width="50"/>
+                </a>
+                <a href="/view-image?id=127893&amp;i=3" target="_blank">
+                 <img src="/passiton/slot/item_pics/.tn.16999423893.jpg.gif" width="50"/>
+                </a>
+               </td>
+               <td>
+                valid til 14 Dec 2023
+                <br/>
+                1 year
+                <br/>
+                15.5cm length
+               </td>
+              </tr>
+              <tr class="lineOdd">
+               <td style="width:20px;">
+                127887
+               </td>
+               <td>
+                <b>
+                 Air-Conditioner system 2
+                </b>
+                <br/>
+                <div class="item_desc" id="desc_127887" style="width:300px;">
+                 Mitsubishi air conditioner System 2 (2 units). VWO to arrange for installation for beneficiary.
+                </div>
+                <span id="desclink_127887" style="display: none;">
+                 <a href="javascript:void(0);" onclick="showDesc('127887')">
+                  more
+                 </a>
+                </span>
+               </td>
+               <td>
+                <b>
+                 Telok Blangah, Harbourfront
+                </b>
+                <br/>
+                <img src="/passiton/slot/u13/homepage/delivery-cost-covered-by-donor.jpg"/>
+               </td>
+               <td nowrap="nowrap">
+                <a href="/view-image?id=127887" target="_blank">
+                 <img src="/passiton/slot/item_pics/.tn.16999351891.jpeg.gif" width="50"/>
+                </a>
+               </td>
+               <td>
+                valid til 20 Nov 2023
+                <br/>
+                4 year
+                <br/>
+                -
+               </td>
+              </tr>
+              <tr class="lineEven">
+               <td style="width:20px;">
+                127886
+               </td>
+               <td>
+                <b>
+                 Ceiling Fan
+                </b>
+                <br/>
+                <div class="item_desc" id="desc_127886" style="width:300px;">
+                 Used item. VWO to arrange for technician for installation in beneficiary house.
+                </div>
+                <span id="desclink_127886" style="display: none;">
+                 <a href="javascript:void(0);" onclick="showDesc('127886')">
+                  more
+                 </a>
+                </span>
+               </td>
+               <td>
+                <b>
+                 Telok Blangah, Harbourfront
+                </b>
+                <br/>
+                <img src="/passiton/slot/u13/homepage/delivery-cost-covered-by-donor.jpg"/>
+               </td>
+               <td nowrap="nowrap">
+                <a href="/view-image?id=127886" target="_blank">
+                 <img src="/passiton/slot/item_pics/.tn.16999349981.jpeg.gif" width="50"/>
+                </a>
+               </td>
+               <td>
+                valid til 20 Nov 2023
+                <br/>
+                4 year
+                <br/>
+                -
+               </td>
+              </tr>
+              <tr class="lineOdd">
+               <td style="width:20px;">
+                127885
+               </td>
+               <td>
+                <b>
+                 Hob &amp; Hood
+                </b>
+                <br/>
+                <div class="item_desc" id="desc_127885" style="width:300px;">
+                 Unused hood and hob. Bought 3 years ago.
+VWO has to arrange for technician to instal the items in the beneficiary home.
+                </div>
+                <span id="desclink_127885" style="display: none;">
+                 <a href="javascript:void(0);" onclick="showDesc('127885')">
+                  more
+                 </a>
+                </span>
+               </td>
+               <td>
+                <b>
+                 Telok Blangah, Harbourfront
+                </b>
+                <br/>
+                <img src="/passiton/slot/u13/homepage/delivery-cost-covered-by-donor.jpg"/>
+               </td>
+               <td nowrap="nowrap">
+                <a href="/view-image?id=127885" target="_blank">
+                 <img src="/passiton/slot/item_pics/.tn.16999347891.jpeg.gif" width="50"/>
+                </a>
+                <a href="/view-image?id=127885&amp;i=2" target="_blank">
+                 <img src="/passiton/slot/item_pics/.tn.16999347892.jpeg.gif" width="50"/>
+                </a>
+                <a href="/view-image?id=127885&amp;i=3" target="_blank">
+                 <img src="/passiton/slot/item_pics/.tn.16999347903.jpeg.gif" width="50"/>
+                </a>
+               </td>
+               <td>
+                valid til 20 Nov 2023
+                <br/>
+                3 year
+                <br/>
+                -
+               </td>
+              </tr>
+              <tr class="lineEven">
+               <td style="width:20px;">
+                127883
+               </td>
+               <td>
+                <b>
+                 Babu playmat
+                </b>
+                <br/>
+                <div class="item_desc" id="desc_127883" style="width: 300px; height: 55px; overflow: hidden;">
+                 Well used playmat that can be folded to smaller size, based on your needs. Some visible minor wear and tear but don't affect the purpose of the playmat.
+                </div>
+                <span id="desclink_127883">
+                 <a href="javascript:void(0);" onclick="showDesc('127883')">
+                  more
+                 </a>
+                </span>
+               </td>
+               <td>
+                <b>
+                 Serangoon Garden, Hougang, Ponggol
+                </b>
+                <br/>
+                <img src="/passiton/slot/u13/homepage/delivery-cost-covered-by-donor.jpg"/>
+               </td>
+               <td nowrap="nowrap">
+                <a href="/view-image?id=127883" target="_blank">
+                 <img class="img_rotate1" src="/passiton/slot/item_pics/.tn.16999323051.jpg.gif" width="50"/>
+                </a>
+                <a href="/view-image?id=127883&amp;i=2" target="_blank">
+                 <img class="img_rotate1" src="/passiton/slot/item_pics/.tn.16999323072.jpg.gif" width="50"/>
+                </a>
+                <a href="/view-image?id=127883&amp;i=3" target="_blank">
+                 <img class="img_rotate1" src="/passiton/slot/item_pics/.tn.16999323093.jpg.gif" width="50"/>
+                </a>
+               </td>
+               <td>
+                valid til 14 Dec 2023
+                <br/>
+                1 year
+                <br/>
+                180cm by 200cm
+               </td>
+              </tr>
+              <tr class="lineOdd">
+               <td style="width:20px;">
+                127878
+               </td>
+               <td>
+                <b>
+                 Baby Pram, Raised Dining Seat, Car Seat
+                </b>
+                <br/>
+                <div class="item_desc" id="desc_127878" style="width:300px;">
+                 Please arrange for self collection. If needy is around Jurong East, Clementi, Buona Vista area, we can discuss to deliver to them.
+                </div>
+                <span id="desclink_127878" style="display: none;">
+                 <a href="javascript:void(0);" onclick="showDesc('127878')">
+                  more
+                 </a>
+                </span>
+               </td>
+               <td>
+                <b>
+                 Upper Bukit Timah, Clementi Park, Ulu Pandan
+                </b>
+                <br/>
+                <img src="/passiton/slot/u13/homepage/delivery-cost-covered-by-donor.jpg"/>
+               </td>
+               <td nowrap="nowrap">
+                <a href="/view-image?id=127878" target="_blank">
+                 <img src="/passiton/slot/item_pics/.tn.16999285731.jpg.gif" width="50"/>
+                </a>
+                <a href="/view-image?id=127878&amp;i=2" target="_blank">
+                 <img src="/passiton/slot/item_pics/.tn.16999285732.jpg.gif" width="50"/>
+                </a>
+                <a href="/view-image?id=127878&amp;i=3" target="_blank">
+                 <img src="/passiton/slot/item_pics/.tn.16999285733.jpg.gif" width="50"/>
+                </a>
+               </td>
+               <td>
+                valid til 14 Dec 2023
+                <br/>
+                1 year
+                <br/>
+                -
+               </td>
+              </tr>
+              <tr class="lineEven">
+               <td style="width:20px;">
+                127868
+               </td>
+               <td>
+                <b>
+                 Boy clothing
+                </b>
+                <br/>
+                <div class="item_desc" id="desc_127868" style="width:300px;">
+                 Boy clothing suitable for 6-8 years old depending on the child build.
+                </div>
+                <span id="desclink_127868" style="display: none;">
+                 <a href="javascript:void(0);" onclick="showDesc('127868')">
+                  more
+                 </a>
+                </span>
+               </td>
+               <td>
+                <b>
+                 Geylang, Eunos
+                </b>
+                <br/>
+                <img src="/passiton/slot/u13/homepage/delivery-cost-covered-by-donor.jpg"/>
+               </td>
+               <td nowrap="nowrap">
+                <a href="/view-image?id=127868" target="_blank">
+                 <img class="img_rotate1" src="/passiton/slot/item_pics/.tn.16999220311.jpg.gif" width="50"/>
+                </a>
+               </td>
+               <td>
+                valid til 14 Dec 2023
+                <br/>
+                3 year
+                <br/>
+                -
+               </td>
+              </tr>
+              <tr class="lineOdd">
+               <td style="width:20px;">
+                127865
+               </td>
+               <td>
+                <b>
+                 seahorse super single mattres
+                </b>
+                <br/>
+                <div class="item_desc" id="desc_127865" style="width:300px;">
+                 42x75x5.81 inch. Good condition with bed sheet cover.
+                </div>
+                <span id="desclink_127865" style="display: none;">
+                 <a href="javascript:void(0);" onclick="showDesc('127865')">
+                  more
+                 </a>
+                </span>
+               </td>
+               <td>
+                <b>
+                 Serangoon Garden, Hougang, Ponggol
+                </b>
+                <br/>
+                <img src="/passiton/slot/u13/homepage/delivery-cost-covered-by-donor.jpg"/>
+               </td>
+               <td nowrap="nowrap">
+                <a href="/view-image?id=127865" target="_blank">
+                 <img src="/passiton/slot/item_pics/.tn.16998699611.jpg.gif" width="50"/>
+                </a>
+               </td>
+               <td>
+                valid til 30 Nov 2023
+                <br/>
+                3 year
+                <br/>
+                Super Single size
+               </td>
+              </tr>
+             </tbody>
+            </table>
+            <br/>
+            <div style="float:left;">
+             <a href="#top">
+              Back To Top
+             </a>
+            </div>
+            <div style="float:right;">
+             Page:
+             <b>
+              1
+             </b>
+             <a href="/item-list?&amp;pg=2">
+              2
+             </a>
+             <a href="/item-list?&amp;pg=3">
+              3
+             </a>
+             <a href="/item-list?&amp;pg=4">
+              4
+             </a>
+            </div>
+            <br/>
+            <br/>
+            <div class="iveo_pipe">
+             <img align="left" alt="" class="pipeobj" id="call://passiton/list_item" src="/pix/spacer.gif"/>
+            </div>
+           </div>
+          </div>
+          <div style="clear:both;">
+          </div>
+         </div>
+        </div>
+        <div id="_ptoo_block_start" style="font-size:1px;border:1px solid transparent">
+        </div>
+        <div class="pageblock_box" id="_ptoo_PTOID" style="display:none">
+         <div class="ive_editable ive_ptod ive_content" id="_ptod_PTOID">
+         </div>
+        </div>
+       </div>
+       <div class="bottom">
+       </div>
+      </div>
+      <div class="sidebar_area">
+       <div class="top">
+       </div>
+       <div class="mid">
+        <div class="sidebar0_box">
+         <div class="ive_content" id="_ptosb0_8284">
+         </div>
+        </div>
+        <div class="subpages_box">
+         <!-- subpages -->
+         <ul class="mysubpages_">
+         </ul>
+         <!-- end subpages -->
+        </div>
+        <div class="sidebar1_box">
+         <div class="ive_content" id="_ptosb1_8284">
+         </div>
+        </div>
+       </div>
+       <div class="bottom">
+       </div>
+      </div>
+      <div class="footer_area">
+       <div style="padding:0px;margin:0px;width:100%;border-top:1px solid #DDD;">
+        <br/>
+        <table>
+         <tbody>
+          <tr>
+           <td class="footer-text">
+            <br/>
+            <a href="http://www.centralsingaporecdc.org.sg/" target="_blank">
+            </a>
+           </td>
+           <td class="footer-text">
+            Managed by:
+            <br/>
+            <a href="http://www.thehelpinghand.org.sg/" target="_blank">
+             <img src="/passiton/slot/u13/footer/pio-logo.png"/>
+            </a>
+           </td>
+           <td width="20">
+           </td>
+           <td class="footer-text">
+            Disclaimer: While Pass It On tries its best to ensure the information provided in this website is complete and
+          accurate, it is not responsible for the information presented by the relevant parties and makes no guarantees that 
+          the information provided herein is free of error.
+           </td>
+           <td width="20">
+           </td>
+           <td>
+            Powered by:
+            <br/>
+            <a href="http://www.commontown.com/" target="_blank">
+             <img src="/passiton/slot/u13/footer/footer-logo-03.png"/>
+            </a>
+           </td>
+          </tr>
+         </tbody>
+        </table>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- pagetree/a1/default_view.html -->
+ </body>
+</html>
