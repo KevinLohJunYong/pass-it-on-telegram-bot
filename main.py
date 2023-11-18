@@ -34,18 +34,16 @@ async def main():
             location_tag = name_desc_tag.find_next_sibling('td')
             location = location_tag.text.strip() if location_tag else 'NA'
 
-            picture_tag = row.find('td', nowrap='nowrap').find('a')
-            picture_url = picture_tag['href'] if picture_tag else 'NA'
-            picture_full_url = f"https://www.passiton.org.sg{picture_url}" if picture_url != 'NA' else 'NA'
             validity_td = row.find_all('td')[4]
             validity_text = validity_td.get_text(separator="\n", strip=True)
+
             caption = f"*New item!*\n" \
                       f"*ID:* {id}\n" \
                       f"*Name Description:*\n {name_desc}\n" \
                       f"*LOCATION COLLECTION/DELIVERY:*\n{location}\n" \
                       f"*VALIDITY ITEM AGE DIMENSION:*\n {validity_text}"
+
             img_src = row.find('td', nowrap='nowrap').find('img')['src']
-            print(picture_full_url)
             img_base_url = 'https://www.passiton.org.sg'
             full_img_url = img_base_url + img_src
             try:
