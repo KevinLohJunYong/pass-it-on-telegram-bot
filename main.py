@@ -1,5 +1,8 @@
 import os
 import asyncio
+
+from selenium.common import NoSuchElementException
+from selenium.webdriver.common.by import By
 from telegram import Bot
 from selenium import webdriver
 from bs4 import BeautifulSoup
@@ -21,27 +24,33 @@ def mark_item_as_sent(item_id):
     cursor.execute("INSERT INTO items (id) VALUES (?)", (item_id,))
     conn.commit()
 
+def write_data_into_file(file_name,content):
+    try:
+        with open(file_name, 'w') as file:
+            file.write(content)
+    except IOError as e:
+        print(f"Error while writing to file: {e}")
+
 async def main():
     bot_token = os.getenv("TELEGRAM_BOT_TOKEN")
     channel_id = os.getenv("CHANNEL_ID")
     bot = Bot(token=bot_token)
+    current_page_number = 1
 
     s = Service('/Users/kevinloh/Downloads/chromedriver-mac-arm64/chromedriver')
     driver = webdriver.Chrome(service=s)
 
     url = 'https://www.passiton.org.sg/item-list'
     driver.get(url)
-    i = 0
     while True:
-        i = i + 1
         time.sleep(5)
         source = driver.page_source
         soup = BeautifulSoup(source, 'html.parser')
+        write_data_into_file("passiton.html",str(soup.prettify()))
 
         rows = soup.find_all('tr', class_='lineEven') + soup.find_all('tr', class_='lineOdd')
         for row in rows:
-            i = i + 1
-            if i == 5: break
+
             id_cell = row.find('td', style='width:20px;')
             id = id_cell.text.strip() if id_cell else 'NA'
 
@@ -88,6 +97,19 @@ async def main():
             except Exception as e:
                 print(f"Error sending photo: {e}")
                 await bot.send_message(chat_id=channel_id, text=caption,parse_mode="Markdown")
+
+        try:
+            page_links = driver.find_elements(By.CSS_SELECTOR, "div[style='float:right;'] a")
+            expected_next_page_number = current_page_number + 1
+            for link in page_links:
+                candidate_next_page_number = link.text.strip()
+                if  candidate_next_page_number == str(expected_next_page_number):
+                    link.click()
+                    print("went to next page successfully")
+                    break
+        except NoSuchElementException:
+            print("Page link not found")
+        current_page_number += 1
 
     driver.quit()
 
