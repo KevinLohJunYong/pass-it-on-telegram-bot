@@ -24,14 +24,19 @@ async def main():
         soup = BeautifulSoup(source, 'html.parser')
 
         rows = soup.find_all('tr', class_='lineEven') + soup.find_all('tr', class_='lineOdd')
-
+        i = 0
         for row in rows:
+            i = i + 1
+            if(i == 5): break
             id_cell = row.find('td', style='width:20px;')
             id = id_cell.text.strip() if id_cell else 'NA'
 
             name_desc_tag = row.find('td').find_next_sibling('td')
             name_desc = name_desc_tag.text.strip() if name_desc_tag else 'NA'
-            name_desc = name_desc[:500] + "..."
+            lines = name_desc.split('\n')
+            name = lines[0]
+            desc = lines[1] if len(lines) > 1 else "NA"
+            desc = desc[:500] # truncate if too long; 500 is arbitrary
 
             location_tag = name_desc_tag.find_next_sibling('td')
             location = location_tag.text.strip() if location_tag else 'NA'
@@ -43,13 +48,14 @@ async def main():
             age_text = lines[1] if len(lines) > 1 else "NA"
             dimensions = lines[2] if len(lines) > 2 else "NA"
 
-            caption = f"*New item!*\n" \
-                      f"*ID:* {id}\n" \
-                      f"*Name Description:*\n {name_desc}\n" \
-                      f"*LOCATION COLLECTION/DELIVERY:*\n{location}\n" \
-                      f"*VALIDITY:*\n {validity_text}\n" \
-                      f"*AGE:*\n {age_text}\n" \
-                      f"*DIMENSIONS:*\n {dimensions}\n" \
+            caption = f"*NEW ITEM!*\n" \
+                      f"*ID:*\n{id.strip()}\n" \
+                      f"*NAME:*\n{name.strip()}\n" \
+                      f"*DESCRIPTION:*\n{desc.strip()}\n" \
+                      f"*LOCATION COLLECTION/DELIVERY:*\n{location.strip()}\n" \
+                      f"*VALIDITY:*\n{validity_text.strip()}\n" \
+                      f"*AGE:*\n{age_text.strip()}\n" \
+                      f"*DIMENSIONS:*\n{dimensions.strip()}\n" \
 
             img_src = row.find('td', nowrap='nowrap').find('img')['src']
             img_base_url = 'https://www.passiton.org.sg'
@@ -57,7 +63,7 @@ async def main():
             try:
                 await bot.send_photo(chat_id=channel_id, photo=full_img_url, caption=caption, parse_mode="Markdown")
             except RetryAfter as e:
-                print("Hit rate limit")
+                print(f"Hit rate limit.. retrying after {e.retry_after}")
                 time.sleep(e.retry_after)
             except Exception as e:
                 print(f"Error sending photo: {e}")
