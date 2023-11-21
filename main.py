@@ -1,6 +1,7 @@
 import os
 import asyncio
 
+import requests
 from selenium.common import NoSuchElementException
 from selenium.webdriver.common.by import By
 from telegram import Bot
@@ -11,7 +12,7 @@ from selenium.webdriver.chrome.service import Service
 from telegram.error import RetryAfter
 import sqlite3
 
-conn = sqlite3.connect('items.db')
+conn = sqlite3.connect('testinggg.db')
 cursor = conn.cursor()
 cursor.execute('''CREATE TABLE IF NOT EXISTS items (id TEXT PRIMARY KEY)''')
 conn.commit()
@@ -46,7 +47,6 @@ async def main():
         time.sleep(5)
         source = driver.page_source
         soup = BeautifulSoup(source, 'html.parser')
-        write_data_into_file("passiton.html",str(soup.prettify()))
 
         rows = soup.find_all('tr', class_='lineEven') + soup.find_all('tr', class_='lineOdd')
         for row in rows:
@@ -85,17 +85,33 @@ async def main():
                       f"*AGE:*\n{age_text.strip()}\n" \
                       f"*DIMENSIONS:*\n{dimensions.strip()}\n" \
 
-            img_src = row.find('td', nowrap='nowrap').find('img')['src']
             img_base_url = 'https://www.passiton.org.sg'
-            full_img_url = img_base_url + img_src
-            print(full_img_url)
+            web_url = img_base_url + f"/view-image?id={id}"
+            driver.get(web_url)
+            time.sleep(5)
+            image_source = driver.page_source
+            image_soup = BeautifulSoup(image_source, 'html.parser')
+            div_element = image_soup.find("div", style="clear:both; margin-top:30px;")
+            if div_element:
+                img_tag = div_element.find("img")
+                if img_tag:
+                    img_src = img_tag.get("src")
+                    full_img_url = img_base_url + img_src
+                else:
+                    write_data_into_file("data.txt",str(image_soup.prettify()))
+                    print("Image tag not found.")
+                    return
+            else:
+                print("Div element not found.")
             try:
+                print(full_img_url)
                 await bot.send_photo(chat_id=channel_id, photo=full_img_url, caption=caption, parse_mode="Markdown")
             except RetryAfter as e:
                 print(f"Hit rate limit.. retrying after {e.retry_after}")
                 time.sleep(e.retry_after)
             except Exception as e:
                 print(f"Error sending photo: {e}")
+                # this line may cause duplicate image to be sent
                 await bot.send_message(chat_id=channel_id, text=caption,parse_mode="Markdown")
 
         try:
