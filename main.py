@@ -1,8 +1,10 @@
 import os
 import asyncio
 
-from selenium.common import NoSuchElementException
+from selenium.common import NoSuchElementException, TimeoutException
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from telegram import Bot
 from selenium import webdriver
 from bs4 import BeautifulSoup
@@ -11,7 +13,7 @@ from selenium.webdriver.chrome.service import Service
 from telegram.error import RetryAfter
 import sqlite3
 
-conn = sqlite3.connect('testingg3.db')
+conn = sqlite3.connect('testinggp.db')
 cursor = conn.cursor()
 cursor.execute('''CREATE TABLE IF NOT EXISTS items (id TEXT PRIMARY KEY)''')
 conn.commit()
@@ -38,9 +40,9 @@ async def send_photo(bot, chat_id, photo_url, caption):
     except RetryAfter as e:
         print(f"Hit rate limit, retrying after {e.retry_after} seconds.")
         time.sleep(e.retry_after)
+        send_photo(bot,chat_id,photo_url,caption)
     except Exception as e:
         print(f"Exception occured while sending photo: {e}")
-        time.sleep(5)
     return False
 
 async def main():
@@ -54,14 +56,19 @@ async def main():
 
     url = 'https://www.passiton.org.sg/item-list'
     driver.get(url)
+
     while True:
+        print(f"We are at page number {current_page_number}")
         time.sleep(5)
         source = driver.page_source
         soup = BeautifulSoup(source, 'html.parser')
-
+        write_data_into_file("passiton.html", str(soup.prettify()))
+        write_data_into_file("line-even.html", str(soup.find_all('tr', class_='lineEven')))
+        write_data_into_file("line-odd.html", str(soup.find_all('tr', class_='lineOdd')))
         rows = soup.find_all('tr', class_='lineEven') + soup.find_all('tr', class_='lineOdd')
+        if len(rows) == 0:
+            break
         for row in rows:
-
             id_cell = row.find('td', style='width:20px;')
             id = id_cell.text.strip() if id_cell else 'NA'
 
@@ -109,15 +116,18 @@ async def main():
                 if img:
                     img_src = img.get("src")
                     full_img_url = img_base_url + img_src
-                    print(f"full img url: {full_img_url}")
                 else:
-                    write_data_into_file("data2.txt",img)
                     print("Image not found.")
                     return
             else:
                 print("Div element not found.")
             is_photo_sent = await send_photo(bot, channel_id, full_img_url, caption)
-            if not is_photo_sent:
+            if is_photo_sent:
+                print(f"image with id {id} sent successfully")
+                print(f"image with url {full_img_url} sent successfully")
+            else:
+                img = div_element.find("img")
+                print(f"image with id {id} not sent successfully")
                 print(f"image not sent {full_img_url}")
                 # i couldnt get it to work with mark down
                 caption = (f"<b>NEW ITEM!</b>\n"
@@ -129,21 +139,11 @@ async def main():
                            f"<b>AGE:</b>\n{age_text}\n"
                            f"<b>DIMENSIONS:</b>\n{dimensions}\n"
                            f"<b>PHOTO URL:</b>\n<a href='{full_img_url}'>{full_img_url}</a>\n")
-                print(caption)
                 caption = caption[:1024]
                 await bot.send_message(chat_id=channel_id, text=caption, parse_mode="HTML")
-        try:
-            page_links = driver.find_elements(By.CSS_SELECTOR, "div[style='float:right;'] a")
-            expected_next_page_number = current_page_number + 1
-            for link in page_links:
-                candidate_next_page_number = link.text.strip()
-                if  candidate_next_page_number == str(expected_next_page_number):
-                    link.click()
-                    print("went to next page successfully")
-                    break
-        except NoSuchElementException:
-            print("Page link not found")
-        current_page_number += 1
+        current_page_number = current_page_number + 1
+        url = f'https://www.passiton.org.sg/item-list&pg={current_page_number}'
+        driver.get(url)
 
     driver.quit()
 
