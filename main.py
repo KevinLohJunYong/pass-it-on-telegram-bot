@@ -1,10 +1,9 @@
 import os
 import asyncio
 
-from selenium.common import NoSuchElementException, TimeoutException
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from PIL import Image
+from io import BytesIO
+import requests
 from telegram import Bot
 from selenium import webdriver
 from bs4 import BeautifulSoup
@@ -13,7 +12,7 @@ from selenium.webdriver.chrome.service import Service
 from telegram.error import RetryAfter
 import sqlite3
 
-conn = sqlite3.connect('testinggp.db')
+conn = sqlite3.connect('testingghi.db')
 cursor = conn.cursor()
 cursor.execute('''CREATE TABLE IF NOT EXISTS items (id TEXT PRIMARY KEY)''')
 conn.commit()
@@ -33,6 +32,20 @@ def write_data_into_file(file_name,content):
     except IOError as e:
         print(f"Error while writing to file: {e}")
 
+def download_image(url):
+    response = requests.get(url)
+    if response.status_code == 200:
+        return BytesIO(response.content)
+    else:
+        raise Exception("Failed to download image")
+
+def compress_image(image_bytes, quality=85):
+    img = Image.open(image_bytes)
+    img_io = BytesIO()
+    img.save(img_io, 'JPEG', quality=quality)
+    img_io.seek(0)
+    return img_io
+
 async def send_photo(bot, chat_id, photo_url, caption):
     try:
         await bot.send_photo(chat_id=chat_id, photo=photo_url, caption=caption, parse_mode="Markdown")
@@ -43,6 +56,17 @@ async def send_photo(bot, chat_id, photo_url, caption):
         send_photo(bot,chat_id,photo_url,caption)
     except Exception as e:
         print(f"Exception occured while sending photo: {e}")
+        print(f"Exception occured while sending photo url: {photo_url}")
+        for quality in range(80, 0, -5):
+          image_bytes = download_image(photo_url)
+          compressed_photo = compress_image(image_bytes,quality)
+          try:
+            is_photo_sent = await send_photo(bot,chat_id,compressed_photo,caption)
+            if is_photo_sent:
+              return True
+          except Exception as e:
+              print(f"Exception occured while sending photo: {e}")
+              continue
     return False
 
 async def main():
@@ -53,7 +77,6 @@ async def main():
 
     s = Service('/Users/kevinloh/Downloads/chromedriver-mac-arm64/chromedriver')
     driver = webdriver.Chrome(service=s)
-
     url = 'https://www.passiton.org.sg/item-list'
     driver.get(url)
 
@@ -77,7 +100,7 @@ async def main():
             else:
                 mark_item_as_sent(id)
 
-            name_desc_tag = row.find('td').find_next_sibling('td')
+            name_desc_tag = id_cell.find_next_sibling('td')
             name_desc = name_desc_tag.text.strip() if name_desc_tag else 'NA'
             lines = name_desc.split('\n')
             name = lines[0].strip()
@@ -86,8 +109,9 @@ async def main():
 
             location_tag = name_desc_tag.find_next_sibling('td')
             location = location_tag.text.strip() if location_tag else 'NA'
+            location = '-' if len(location) == 0 else location
 
-            validity_item_age_dimension_td = row.find_all('td')[4]
+            validity_item_age_dimension_td = location_tag.find_next_sibling('td').find_next_sibling('td')
             validity_item_age_dimension_text = validity_item_age_dimension_td.get_text(separator="\n", strip=True)
             lines = validity_item_age_dimension_text.split('\n')
             validity_text = lines[0].strip()
