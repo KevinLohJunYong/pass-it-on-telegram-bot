@@ -12,7 +12,7 @@ from selenium.webdriver.chrome.service import Service
 from telegram.error import RetryAfter
 import sqlite3
 
-conn = sqlite3.connect('testingghi.db')
+conn = sqlite3.connect('testingg13.db')
 cursor = conn.cursor()
 cursor.execute('''CREATE TABLE IF NOT EXISTS items (id TEXT PRIMARY KEY)''')
 conn.commit()
@@ -81,6 +81,7 @@ async def main():
     driver.get(url)
 
     while True:
+        row_number = 0
         print(f"We are at page number {current_page_number}")
         time.sleep(5)
         source = driver.page_source
@@ -92,6 +93,7 @@ async def main():
         if len(rows) == 0:
             break
         for row in rows:
+            row_number = row_number + 1
             id_cell = row.find('td', style='width:20px;')
             id = id_cell.text.strip() if id_cell else 'NA'
 
@@ -117,15 +119,17 @@ async def main():
             validity_text = lines[0].strip()
             age_text = lines[1].strip() if len(lines) > 1 else "NA"
             dimensions = lines[2].strip() if len(lines) > 2 else "NA"
+            # https://www.passiton.org.sg/item-list?search=1&search_by=id&search_id=128196&ItemCat1=&ItemSubCat1=
 
-            caption = f"*NEW ITEM!*\n" \
-                      f"*ID:*\n{id}\n" \
-                      f"*NAME:*\n{name}\n" \
-                      f"*DESCRIPTION:*\n{desc}\n" \
-                      f"*LOCATION COLLECTION/DELIVERY:*\n{location}\n" \
-                      f"*VALIDITY:*\n{validity_text}\n" \
-                      f"*AGE:*\n{age_text}\n" \
-                      f"*DIMENSIONS:*\n{dimensions}\n"
+            item_url = f"https://www.passiton.org.sg/item-list?search=1&search_by=id&search_id={id}&ItemCat1=&ItemSubCat1="
+            caption = (f"*NEW ITEM* [🔗]({item_url})\n"
+                       f"*ID:*\n{id}\n"
+                       f"*NAME:*\n{name}\n"
+                       f"*DESCRIPTION:*\n{desc}\n"
+                       f"*LOCATION COLLECTION/DELIVERY:*\n{location}\n"
+                       f"*VALIDITY:*\n{validity_text}\n"
+                       f"*AGE:*\n{age_text}\n"
+                       f"*DIMENSIONS:*\n{dimensions}\n")
 
             caption = caption[:1024] # telegram max characters in a message limit
             img_base_url = 'https://www.passiton.org.sg'
@@ -150,19 +154,19 @@ async def main():
                 print(f"image with id {id} sent successfully")
                 print(f"image with url {full_img_url} sent successfully")
             else:
-                img = div_element.find("img")
+                print("it should never reach here")
                 print(f"image with id {id} not sent successfully")
                 print(f"image not sent {full_img_url}")
                 # i couldnt get it to work with mark down
-                caption = (f"<b>NEW ITEM!</b>\n"
+                caption = (f"<b>NEW ITEM:</b> <a href='{item_url}'>LINK</a>\n"
                            f"<b>ID:</b>\n{id}\n"
                            f"<b>NAME:</b>\n{name}\n"
                            f"<b>DESCRIPTION:</b>\n{desc}\n"
                            f"<b>LOCATION COLLECTION/DELIVERY:</b>\n{location}\n"
                            f"<b>VALIDITY:</b>\n{validity_text}\n"
                            f"<b>AGE:</b>\n{age_text}\n"
-                           f"<b>DIMENSIONS:</b>\n{dimensions}\n"
-                           f"<b>PHOTO URL:</b>\n<a href='{full_img_url}'>{full_img_url}</a>\n")
+                           f"<b>DIMENSIONS:</b>\n{dimensions}\n")
+
                 caption = caption[:1024]
                 await bot.send_message(chat_id=channel_id, text=caption, parse_mode="HTML")
         current_page_number = current_page_number + 1
