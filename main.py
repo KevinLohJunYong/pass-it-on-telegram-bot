@@ -158,14 +158,15 @@ async def main():
                 print(f"image with id {id} not sent successfully")
                 print(f"image not sent {full_img_url}")
                 # i couldnt get it to work with mark down
-                caption = (f"<b>NEW ITEM:</b> <a href='{item_url}'>LINK</a>\n"
-                           f"<b>ID:</b>\n{id}\n"
-                           f"<b>NAME:</b>\n{name}\n"
-                           f"<b>DESCRIPTION:</b>\n{desc}\n"
-                           f"<b>LOCATION COLLECTION/DELIVERY:</b>\n{location}\n"
-                           f"<b>VALIDITY:</b>\n{validity_text}\n"
-                           f"<b>AGE:</b>\n{age_text}\n"
-                           f"<b>DIMENSIONS:</b>\n{dimensions}\n")
+                caption = (f"<b>NEW ITEM:</b> <a href='{item_url}'>🔗</a>\n"
+                           f"<b>ID:</b> {id}\n"
+                           f"<b>NAME:</b> {name}\n"
+                           f"<b>DESCRIPTION:</b> {desc}\n"
+                           f"<b>LOCATION COLLECTION/DELIVERY:</b> {location}\n"
+                           f"<b>VALIDITY:</b> {validity_text}\n"
+                           f"<b>AGE:</b> {age_text}\n"
+                           f"<b>DIMENSIONS:</b> {dimensions}\n"
+                           f"<b>PHOTO URL:</b> <a href='{full_img_url}'>View Photo</a>\n")
 
                 caption = caption[:1024]
                 await bot.send_message(chat_id=channel_id, text=caption, parse_mode="HTML")
